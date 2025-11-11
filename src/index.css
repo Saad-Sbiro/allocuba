@@ -186,7 +186,7 @@
 
 /* ===== Body & Root ===== */
 body {
-  font-family: 'Merienda', 'Inter', cursive, -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Faculty Glyphic', 'Merienda', 'Inter', sans-serif, -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-feature-settings: "kern" 1;
@@ -206,7 +206,13 @@ body {
 [lang="ar"] body,
 html[dir="rtl"] body,
 html[lang="ar"] body {
-  font-family: 'Noto Sans Arabic', 'Merienda', sans-serif;
+  font-family: 'Noto Sans Arabic', 'Faculty Glyphic', 'Merienda', sans-serif;
+}
+
+/* French font override */
+[lang="fr"] body,
+html[lang="fr"] body {
+  font-family: 'Faculty Glyphic', 'Merienda', 'Inter', sans-serif;
 }
 
 /* ===== Animated Water Background Layers ===== */
@@ -296,7 +302,7 @@ h1, h2, h3, h4, h5, h6 {
   border: 1.5px solid transparent;
   cursor: pointer;
   transition: all var(--transition-base);
-  font-family: 'Merienda', 'Inter', cursive, -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+  font-family: 'Faculty Glyphic', 'Merienda', 'Inter', sans-serif, -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -527,7 +533,7 @@ h1, h2, h3, h4, h5, h6 {
   border: 1.5px solid var(--glass-border-light-weak);
   border-radius: var(--radius-md);
   font-size: 17px;
-  font-family: 'Merienda', 'Inter', cursive, -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+  font-family: 'Faculty Glyphic', 'Merienda', 'Inter', sans-serif, -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
   letter-spacing: -0.41px;
   transition: all var(--transition-base);
   background: var(--glass-bg-light-weak);
@@ -973,6 +979,13 @@ h1, h2, h3, h4, h5, h6 {
   .card {
     padding: calc(var(--spacing-xl) * 1.2);
   }
+}
+
+/* ===== Faculty Glyphic Font ===== */
+.faculty-glyphic-regular {
+  font-family: "Faculty Glyphic", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 /* ===== Merienda Font ===== */
