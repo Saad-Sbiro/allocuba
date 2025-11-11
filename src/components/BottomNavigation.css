@@ -81,8 +81,8 @@
   inset: 0;
   z-index: -1;
   border-radius: 28px;
-  backdrop-filter: blur(0.5px) saturate(180%);
-  -webkit-backdrop-filter: blur(0.5px) saturate(180%);
+  backdrop-filter: blur(0.8px) saturate(180%);
+  -webkit-backdrop-filter: blur(0.8px) saturate(180%);
   filter: url(#glass-distortion);
   -webkit-filter: url(#glass-distortion);
   background: transparent;
@@ -142,8 +142,8 @@
 }
 
 .dark .nav-item::after {
-  backdrop-filter: blur(0.5px) saturate(160%);
-  -webkit-backdrop-filter: blur(0.5px) saturate(160%);
+  backdrop-filter: blur(0.8px) saturate(160%);
+  -webkit-backdrop-filter: blur(0.8px) saturate(160%);
   filter: url(#glass-distortion);
   -webkit-filter: url(#glass-distortion);
   background: transparent;
@@ -297,8 +297,8 @@
   }
   
   .nav-item::after {
-    backdrop-filter: blur(0.5px) saturate(160%) !important;
-    -webkit-backdrop-filter: blur(0.5px) saturate(160%) !important;
+    backdrop-filter: blur(0.8px) saturate(160%) !important;
+    -webkit-backdrop-filter: blur(0.8px) saturate(160%) !important;
   }
   
   .dark .nav-item {
@@ -306,8 +306,8 @@
   }
   
   .dark .nav-item::after {
-    backdrop-filter: blur(0.5px) saturate(140%) !important;
-    -webkit-backdrop-filter: blur(0.5px) saturate(140%) !important;
+    backdrop-filter: blur(0.8px) saturate(140%) !important;
+    -webkit-backdrop-filter: blur(0.8px) saturate(140%) !important;
   }
   
   /* Optimized transitions on mobile */
