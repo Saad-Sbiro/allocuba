@@ -1,0 +1,202 @@
+/* ===== iOS 26 Liquid Glass - Splash Screen ===== */
+
+.splash-screen {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.splash-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, 
+    var(--deep-ocean) 0%, 
+    var(--ocean-blue) 30%, 
+    var(--aqua) 60%, 
+    var(--ios-blue-light) 100%
+  );
+  overflow: hidden;
+}
+
+.splash-background::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 100%;
+  height: 200%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 255, 255, 0.08) 0%,
+    transparent 50%
+  );
+  animation: gentlePulse 8s ease-in-out infinite;
+}
+
+.splash-background::after {
+  content: '';
+  position: absolute;
+  bottom: -50%;
+  left: -20%;
+  width: 100%;
+  height: 200%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(90, 200, 250, 0.12) 0%,
+    transparent 50%
+  );
+  animation: gentlePulse 10s ease-in-out infinite reverse;
+}
+
+@keyframes gentlePulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+.splash-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: var(--spacing-2xl);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.splash-title {
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #FFFFFF;
+  text-shadow: 
+    0 2px 20px rgba(0, 0, 0, 0.4),
+    0 0 40px rgba(255, 255, 255, 0.3);
+  margin-bottom: var(--spacing-md);
+  position: relative;
+  z-index: 1;
+}
+
+.splash-tagline {
+  font-size: 18px;
+  color: #FFFFFF;
+  font-weight: 400;
+  letter-spacing: -0.24px;
+  margin-bottom: var(--spacing-3xl);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+  line-height: 1.8;
+  opacity: 0.95;
+  position: relative;
+  z-index: 1;
+}
+
+.loader-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto var(--spacing-3xl);
+}
+
+.loader-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.loader-progress-bar {
+  width: 100%;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-full);
+  overflow: visible;
+  position: relative;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.loader-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, 
+    rgba(255, 255, 255, 0.9) 0%, 
+    rgba(255, 255, 255, 1) 100%
+  );
+  border-radius: var(--radius-full);
+  transition: width 0.1s linear;
+  position: relative;
+  box-shadow: 
+    0 0 15px rgba(255, 255, 255, 0.6),
+    0 2px 6px rgba(255, 255, 255, 0.4);
+  overflow: visible;
+}
+
+.loader-truck-logo {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(50%, -50%);
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
+  z-index: 10;
+}
+
+.loader-percentage {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #FFFFFF;
+  text-shadow: 
+    0 2px 12px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(255, 255, 255, 0.4);
+  opacity: 1;
+  margin-top: 4px;
+}
+
+.loader-logo-bottom {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bottom-logo {
+  width: 77px;
+  height: 77px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+  opacity: 0.85;
+}
+

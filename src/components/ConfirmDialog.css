@@ -1,0 +1,232 @@
+/* ===== iOS 26 Liquid Glass - Confirm Dialog ===== */
+
+.confirm-dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  animation: fadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: var(--spacing-lg);
+}
+
+.confirm-dialog {
+  background: var(--glass-bg-overlay);
+  backdrop-filter: blur(var(--blur-xl)) saturate(200%);
+  -webkit-backdrop-filter: blur(var(--blur-xl)) saturate(200%);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--glass-shadow-xl), var(--glass-shadow-inner);
+  max-width: 400px;
+  width: 100%;
+  animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  border: 1px solid var(--glass-border-light);
+  position: relative;
+}
+
+.confirm-dialog::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 255, 255, 0.5) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.dark .confirm-dialog {
+  background: var(--glass-bg-overlay);
+  border-color: var(--glass-border-dark);
+  box-shadow: var(--glass-shadow-xl), var(--glass-shadow-inner);
+}
+
+.dark .confirm-dialog::before {
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 255, 255, 0.12) 50%,
+    transparent 100%
+  );
+}
+
+.confirm-dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-lg) var(--spacing-lg) var(--spacing-md);
+  position: relative;
+}
+
+.confirm-dialog-icon {
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, var(--ios-orange) 0%, #FFB340 100%);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  box-shadow: 
+    0 4px 16px rgba(255, 149, 0, 0.4),
+    0 2px 8px rgba(255, 149, 0, 0.3);
+  margin: 0 auto;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.confirm-dialog-close {
+  position: absolute;
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: var(--glass-bg-light-weak);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  color: var(--text-tertiary);
+  -webkit-tap-highlight-color: transparent;
+  border: 0.5px solid var(--glass-border-light-weak);
+}
+
+.confirm-dialog-close:active {
+  background: var(--glass-bg-light);
+  transform: scale(0.95) rotate(90deg);
+}
+
+.dark .confirm-dialog-close {
+  background: var(--glass-bg-dark-weak);
+  border-color: var(--glass-border-dark-weak);
+}
+
+.dark .confirm-dialog-close:active {
+  background: var(--glass-bg-dark);
+}
+
+.confirm-dialog-content {
+  padding: 0 var(--spacing-lg) var(--spacing-lg);
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.confirm-dialog-title {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.35px;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+.confirm-dialog-message {
+  font-size: 17px;
+  color: var(--text-tertiary);
+  letter-spacing: -0.41px;
+  line-height: 1.47;
+  margin: 0;
+  font-weight: 400;
+}
+
+.confirm-dialog-actions {
+  display: flex;
+  gap: var(--spacing-md);
+  padding: 0 var(--spacing-lg) var(--spacing-lg);
+}
+
+.confirm-dialog-cancel,
+.confirm-dialog-confirm {
+  flex: 1;
+  padding: 14px var(--spacing-lg);
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.41px;
+  border-radius: var(--radius-md);
+  min-height: 44px;
+}
+
+.confirm-dialog-cancel {
+  background: var(--glass-bg-light);
+  backdrop-filter: blur(var(--blur-md)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--blur-md)) saturate(180%);
+  border: 1px solid var(--glass-border-light);
+  color: var(--ios-blue);
+  box-shadow: var(--glass-shadow-sm), var(--glass-shadow-inner);
+}
+
+.confirm-dialog-cancel:active {
+  background: var(--glass-bg-light-strong);
+  transform: scale(0.98);
+}
+
+.dark .confirm-dialog-cancel {
+  background: var(--glass-bg-dark);
+  border-color: var(--glass-border-dark);
+}
+
+.dark .confirm-dialog-cancel:active {
+  background: var(--glass-bg-dark-strong);
+}
+
+.confirm-dialog-confirm {
+  background: rgba(10, 132, 255, 0.15);
+  backdrop-filter: blur(var(--blur-md)) saturate(200%);
+  -webkit-backdrop-filter: blur(var(--blur-md)) saturate(200%);
+  border: 1px solid rgba(10, 132, 255, 0.35);
+  color: var(--ios-blue);
+  box-shadow: 0 4px 16px rgba(10, 132, 255, 0.25), var(--glass-shadow-sm), var(--glass-shadow-inner);
+}
+
+.confirm-dialog-confirm:active {
+  background: rgba(10, 132, 255, 0.22);
+  transform: scale(0.98);
+}
+
+.dark .confirm-dialog-confirm {
+  background: rgba(10, 132, 255, 0.18);
+  border-color: rgba(10, 132, 255, 0.4);
+  color: var(--ios-blue-light);
+}
+
+.dark .confirm-dialog-confirm:active {
+  background: rgba(10, 132, 255, 0.28);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

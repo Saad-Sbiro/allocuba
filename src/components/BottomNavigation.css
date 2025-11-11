@@ -1,0 +1,354 @@
+/* ===== iOS 26 Liquid Glass - Bottom Navigation Styles ===== */
+/* Nav indicator removed - using glass effect directly on nav-item.active */
+
+/* ===== Bottom Nav Container ===== */
+.bottom-nav {
+  /* Performance optimization */
+  contain: layout style paint;
+  transform: translateZ(0);
+  will-change: contents;
+}
+
+/* ===== Nav Item - Optimized for Smooth Animations ===== */
+.nav-item {
+  /* Layout */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-width: 64px;
+  min-height: 52px;
+  padding: 10px 16px;
+  
+  /* Liquid Glass Base - More Transparent */
+  background: 
+    linear-gradient(135deg,
+      rgba(255, 255, 255, 0.04) 0%,
+      rgba(255, 255, 255, 0.02) 50%,
+      rgba(255, 255, 255, 0.05) 100%
+    );
+  backdrop-filter: blur(16px) saturate(160%) brightness(103%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%) brightness(103%);
+  
+  /* Glass Border */
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  
+  /* Glass Shadow */
+  box-shadow: 
+    0 2px 10px rgba(0, 0, 0, 0.08),
+    0 1px 0 rgba(255, 255, 255, 0.25) inset,
+    0 -1px 0 rgba(255, 255, 255, 0.1) inset;
+  
+  /* Interaction */
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  
+  /* Color */
+  color: var(--text-tertiary, rgba(0, 0, 0, 0.45));
+  
+  /* Ultra-smooth GPU-accelerated transitions with delay */
+  will-change: transform, opacity, background-color;
+  transition: 
+    transform 0.4s cubic-bezier(0.2, 0, 0.2, 1) 0.05s,
+    opacity 0.3s cubic-bezier(0.2, 0, 0.2, 1) 0.05s,
+    background-color 0.35s cubic-bezier(0.2, 0, 0.2, 1) 0.05s,
+    border-color 0.3s cubic-bezier(0.2, 0, 0.2, 1) 0.05s,
+    box-shadow 0.35s cubic-bezier(0.2, 0, 0.2, 1) 0.05s,
+    color 0.3s cubic-bezier(0.2, 0, 0.2, 1) 0.05s,
+    flex-grow 0.4s cubic-bezier(0.2, 0, 0.2, 1) 0.05s,
+    min-width 0.4s cubic-bezier(0.2, 0, 0.2, 1) 0.05s;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  contain: layout style paint;
+  opacity: 1;
+}
+
+.nav-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  transform: translateY(-1px) translateZ(0);
+}
+
+/* ===== Nav Item Active Press ===== */
+.nav-item:active {
+  transform: translateY(0) scale(0.96) translateZ(0);
+  transition: transform 0.1s cubic-bezier(0.2, 0, 0.2, 1);
+}
+
+.nav-item.active {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.15) 100%);
+  backdrop-filter: blur(24px) saturate(190%) brightness(108%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%) brightness(108%);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 4px 20px rgba(10, 132, 255, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  color: var(--ios-blue, #0A84FF);
+  transform: translateY(-2px) translateZ(0);
+  flex-grow: 1;
+  min-width: 0;
+  opacity: 1;
+  /* Smooth expansion - transitions inherited from .nav-item */
+}
+
+/* ===== DARK MODE - Nav Items ===== */
+.dark .nav-item {
+  background: 
+    linear-gradient(135deg,
+      rgba(255, 255, 255, 0.03) 0%,
+      rgba(255, 255, 255, 0.015) 50%,
+      rgba(255, 255, 255, 0.025) 100%
+    );
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 
+    0 2px 10px rgba(0, 0, 0, 0.3),
+    0 1px 0 rgba(255, 255, 255, 0.12) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.15) inset;
+  color: var(--text-tertiary, rgba(255, 255, 255, 0.55));
+}
+
+.dark .nav-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
+  transform: translateY(-1px) translateZ(0);
+}
+
+.dark .nav-item.active {
+  background: 
+    linear-gradient(135deg,
+      rgba(255, 255, 255, 0.15) 0%,
+      rgba(255, 255, 255, 0.1) 50%,
+      rgba(255, 255, 255, 0.13) 100%
+    ),
+    linear-gradient(180deg,
+      rgba(10, 132, 255, 0.12) 0%,
+      transparent 100%
+    );
+  
+  backdrop-filter: 
+    blur(30px) 
+    saturate(200%) 
+    brightness(103%) 
+    contrast(110%);
+  -webkit-backdrop-filter: 
+    blur(30px) 
+    saturate(200%) 
+    brightness(103%) 
+    contrast(110%);
+  
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  
+  box-shadow: 
+    0 4px 24px rgba(10, 132, 255, 0.2),
+    0 2px 12px rgba(10, 132, 255, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.08);
+  color: var(--ios-blue-light, #64D2FF);
+  transform: translateY(-2px) translateZ(0);
+  flex-grow: 1;
+  min-width: 0;
+}
+
+/* ===== Nav Label Typography ===== */
+.nav-label {
+  font-size: 10px;
+  font-weight: 600;
+  font-family: 'Merienda', 'Inter', cursive, -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+  letter-spacing: 0.15px;
+  line-height: 1.2;
+  transition: 
+    color 0.3s cubic-bezier(0.2, 0, 0.2, 1) 0.05s,
+    font-weight 0.25s cubic-bezier(0.2, 0, 0.2, 1) 0.05s,
+    text-shadow 0.3s cubic-bezier(0.2, 0, 0.2, 1) 0.05s;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  will-change: font-weight, color;
+  transform: translateZ(0);
+}
+
+[dir="rtl"] .nav-label,
+[lang="ar"] .nav-label {
+  font-family: 'Noto Sans Arabic', 'Merienda', sans-serif;
+}
+
+.nav-item.active .nav-label {
+  font-weight: 700;
+  text-shadow: 
+    0 0 8px rgba(10, 132, 255, 0.5),
+    0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== Icon Wrapper ===== */
+.nav-icon-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: 
+    transform 0.35s cubic-bezier(0.2, 0, 0.2, 1) 0.05s,
+    filter 0.3s cubic-bezier(0.2, 0, 0.2, 1) 0.05s;
+  will-change: transform, filter;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.nav-item:hover .nav-icon-wrapper {
+  transform: translateY(-2px) scale(1.05) translateZ(0);
+}
+
+.nav-item.active .nav-icon-wrapper {
+  filter: drop-shadow(0 0 8px rgba(10, 132, 255, 0.5));
+  transform: translateZ(0);
+}
+
+/* ===== Home Icon - Darker Color ===== */
+.nav-item:first-child svg {
+  color: rgba(0, 0, 0, 0.75) !important;
+  stroke: rgba(0, 0, 0, 0.75) !important;
+  transition: color 0.3s cubic-bezier(0.2, 0, 0.2, 1), stroke 0.3s cubic-bezier(0.2, 0, 0.2, 1);
+}
+
+.nav-item:first-child.active svg {
+  color: var(--ios-blue, #0A84FF) !important;
+  stroke: var(--ios-blue, #0A84FF) !important;
+}
+
+.dark .nav-item:first-child svg {
+  color: rgba(255, 255, 255, 0.75) !important;
+  stroke: rgba(255, 255, 255, 0.75) !important;
+}
+
+.dark .nav-item:first-child.active svg {
+  color: var(--ios-blue-light, #64D2FF) !important;
+  stroke: var(--ios-blue-light, #64D2FF) !important;
+}
+
+/* ===== Notification Badge - Liquid Glass Pill ===== */
+.notification-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 10px;
+  height: 10px;
+  background: 
+    radial-gradient(circle,
+      rgba(255, 69, 58, 1) 0%,
+      rgba(255, 59, 48, 0.9) 100%
+    );
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 
+    0 0 12px rgba(255, 59, 48, 0.8),
+    0 2px 8px rgba(255, 59, 48, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  z-index: 3;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: liquidBadgePulse 2.5s ease-in-out infinite;
+}
+
+@keyframes liquidBadgePulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 
+      0 0 12px rgba(255, 59, 48, 0.8),
+      0 2px 8px rgba(255, 59, 48, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+  50% {
+    transform: scale(1.15);
+    box-shadow: 
+      0 0 20px rgba(255, 59, 48, 1),
+      0 4px 12px rgba(255, 59, 48, 0.6),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  }
+}
+
+.dark .notification-badge {
+  border-color: rgba(28, 28, 30, 0.9);
+  box-shadow: 
+    0 0 16px rgba(255, 69, 58, 1),
+    0 2px 10px rgba(255, 69, 58, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+/* ===== Mobile Phone Optimizations - Reduce Lag ===== */
+@media (max-width: 767px) {
+  /* Reduce backdrop-filter blur on nav items for better performance */
+  .nav-item {
+    backdrop-filter: blur(10px) saturate(140%) brightness(103%) !important;
+    -webkit-backdrop-filter: blur(10px) saturate(140%) brightness(103%) !important;
+  }
+  
+  .nav-item:hover {
+    backdrop-filter: blur(12px) saturate(140%) !important;
+    -webkit-backdrop-filter: blur(12px) saturate(140%) !important;
+  }
+  
+  .nav-item.active {
+    backdrop-filter: blur(14px) saturate(160%) brightness(106%) !important;
+    -webkit-backdrop-filter: blur(14px) saturate(160%) brightness(106%) !important;
+  }
+  
+  .dark .nav-item.active {
+    backdrop-filter: blur(16px) saturate(160%) brightness(102%) contrast(105%) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(160%) brightness(102%) contrast(105%) !important;
+  }
+  
+  /* Simplify gradients on mobile */
+  .nav-item {
+    background: rgba(255, 255, 255, 0.04) !important;
+  }
+  
+  .nav-item.active {
+    background: rgba(255, 255, 255, 0.2) !important;
+  }
+  
+  .dark .nav-item {
+    background: rgba(255, 255, 255, 0.025) !important;
+  }
+  
+  .dark .nav-item.active {
+    background: rgba(255, 255, 255, 0.12) !important;
+  }
+  
+  /* Reduce transition complexity on mobile */
+  .nav-item {
+    transition: 
+      transform 0.25s cubic-bezier(0.2, 0, 0.2, 1),
+      background-color 0.2s cubic-bezier(0.2, 0, 0.2, 1),
+      color 0.2s cubic-bezier(0.2, 0, 0.2, 1),
+      flex-grow 0.25s cubic-bezier(0.2, 0, 0.2, 1) !important;
+  }
+  
+  /* Simplify shadows on mobile */
+  .nav-item {
+    box-shadow: 
+      0 1px 6px rgba(0, 0, 0, 0.08),
+      0 1px 0 rgba(255, 255, 255, 0.2) inset !important;
+  }
+  
+  .nav-item.active {
+    box-shadow: 
+      0 2px 12px rgba(10, 132, 255, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+  }
+  
+  /* Reduce will-change on mobile */
+  .nav-item {
+    will-change: transform, background-color;
+  }
+  
+  .nav-icon-wrapper {
+    will-change: transform;
+  }
+  
+  .nav-label {
+    will-change: color;
+  }
+}

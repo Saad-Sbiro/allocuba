@@ -1,0 +1,106 @@
+/* ===== iOS 26 Liquid Glass - Language Toggle ===== */
+
+.language-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: 10px 16px;
+  background: var(--glass-bg-light-weak);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border: 1px solid var(--glass-border-light-weak);
+  border-radius: var(--radius-full);
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  -webkit-tap-highlight-color: transparent;
+  box-shadow: var(--glass-shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.language-toggle::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.language-toggle:active {
+  transform: scale(0.95);
+  background: var(--glass-bg-light);
+}
+
+.language-toggle:hover {
+  background: var(--glass-bg-overlay);
+  border-color: var(--glass-border-light);
+  box-shadow: var(--glass-shadow);
+}
+
+.language-toggle svg {
+  flex-shrink: 0;
+  color: var(--ios-blue);
+  transition: transform var(--transition-base);
+}
+
+.language-toggle:active svg {
+  transform: rotate(180deg);
+}
+
+.language-code {
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  position: relative;
+  z-index: 2;
+}
+
+.dark .language-toggle {
+  background: var(--glass-bg-dark-weak);
+  border-color: var(--glass-border-dark-weak);
+}
+
+.dark .language-toggle::before {
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 255, 255, 0.12) 50%,
+    transparent 100%
+  );
+}
+
+.dark .language-toggle:active {
+  background: var(--glass-bg-dark);
+}
+
+.dark .language-toggle:hover {
+  background: var(--glass-bg-overlay);
+  border-color: var(--glass-border-dark);
+}
+
+/* Tablet support */
+@media (min-width: 768px) {
+  .language-toggle {
+    padding: 12px 20px;
+    font-size: 15px;
+    gap: var(--spacing-sm);
+  }
+
+  .language-toggle svg {
+    width: 22px;
+    height: 22px;
+  }
+}
+

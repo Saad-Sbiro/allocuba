@@ -1,0 +1,225 @@
+export const fr = {
+  // Common
+  common: {
+    welcome: 'Bienvenue',
+    loading: 'Chargement...',
+    cancel: 'Annuler',
+    confirm: 'Confirmer',
+    next: 'Suivant',
+    back: 'Retour',
+    save: 'Enregistrer',
+    delete: 'Supprimer',
+    edit: 'Modifier',
+    close: 'Fermer',
+    search: 'Rechercher',
+    filter: 'Filtrer',
+    language: 'Langue'
+  },
+
+  // Splash Screen
+  splash: {
+    title: 'Allocuba',
+    tagline: 'كسب طمأنينة، الماء فݣاع المدينة.'
+  },
+
+  // Sign Up
+  signup: {
+    title: 'Bienvenue',
+    subtitle: 'Choisissez votre rôle',
+    client: 'Client',
+    driver: 'Livreur',
+    firstName: 'Prénom',
+    lastName: 'Nom',
+    phone: 'Numéro de téléphone',
+    driverId: 'ID Livreur',
+    password: 'Mot de passe',
+    start: 'Commencer',
+    login: 'Se connecter',
+    selectLanguage: 'Choisir la langue',
+    language: 'Langue'
+  },
+
+  // Client Home
+  clientHome: {
+    greeting: 'Bonjour, {name}',
+    greetingDefault: 'Bonjour',
+    subtitle: 'Commandez de l\'eau en silence',
+    needWater: 'Besoin d\'eau ?',
+    orderNow: 'Commandez maintenant et recevez votre livraison rapidement',
+    orderButton: 'Commander de l\'eau',
+    recentOrders: 'Mes commandes récentes',
+    driversWithoutApp: 'Livreurs sans application',
+    contactDirectly: 'Contactez ces livreurs directement par téléphone',
+    deliveredBy: 'Livré par',
+    status: {
+      inProgress: 'En cours',
+      delivered: 'Livrée'
+    }
+  },
+
+  // Order Page
+  order: {
+    title: 'Nouvelle commande',
+    quantity: 'Quantité d\'eau',
+    waterType: 'Type d\'eau',
+    deliveryAddress: 'Adresse de livraison',
+    orderSummary: 'Résumé de la commande',
+    confirmOrder: 'Confirmer la commande',
+    tonnes: 'tonnes',
+    unitPrice: 'Prix unitaire',
+    water: 'Eau',
+    serviceFee: 'Frais de service',
+    total: 'Total',
+    estimatedDelivery: 'Livraison estimée',
+    currentAddress: 'Adresse actuelle détectée',
+    detectLocation: 'Détecter ma position',
+    detecting: 'Détection...',
+    chooseAddress: 'Choisir une autre adresse',
+    interactiveMap: 'Carte interactive',
+    currentLocation: 'Votre position actuelle sera utilisée',
+    step1: 'Quantité & Type',
+    step2: 'Adresse',
+    step3: 'Résumé',
+    orderConfirmed: 'Commande confirmée!'
+  },
+
+  // Water Types
+  waterTypes: {
+    tantan: 'Eau de Tantan',
+    filtered: 'Eau filtrée',
+    pricePerTonne: '40 MAD / tonne',
+    fixedFee: '+ 5 MAD frais (fixe)'
+  },
+
+  // Updates/Notifications
+  updates: {
+    title: 'Notifications',
+    noNotifications: 'Aucune notification',
+    viewOrder: 'Voir la commande',
+    viewOrders: 'Voir les commandes',
+    inRoute: 'Votre commande est en route',
+    inRouteMessage: '{driver} a commencé la livraison de votre commande de {quantity} tonnes d\'eau de Tantan. Arrivée estimée: {time}',
+    delivered: 'Commande livrée',
+    deliveredMessage: 'Votre commande de {quantity} tonnes d\'eau filtrée a été livrée avec succès à votre adresse. Merci d\'avoir utilisé Allocuba!',
+    confirmed: 'Commande confirmée',
+    confirmedMessage: 'Votre commande de {quantity} tonnes d\'eau de Tantan a été confirmée. Un livreur sera assigné sous peu.',
+    driverAssigned: 'Livreur assigné',
+    driverAssignedMessage: '{driver} a été assigné à votre commande. Il vous contactera avant la livraison.',
+    timeAgo: {
+      minutes: 'Il y a {count} minute',
+      minutesPlural: 'Il y a {count} minutes',
+      hours: 'Il y a {count} heure',
+      hoursPlural: 'Il y a {count} heures',
+      yesterday: 'Hier',
+      days: 'Il y a {count} jour',
+      daysPlural: 'Il y a {count} jours'
+    }
+  },
+
+  // Profile
+  profile: {
+    title: 'Profil',
+    name: '{firstName} {lastName}',
+    role: 'Client',
+    editProfile: 'Modifier le profil',
+    personalInfo: 'Informations personnelles',
+    phone: 'Téléphone',
+    address: 'Adresse',
+    addressValue: 'Laayoune, Maroc',
+    orderHistory: 'Historique des commandes',
+    settings: 'Paramètres',
+    darkMode: 'Mode sombre',
+    logout: 'Se déconnecter',
+    logoutConfirm: 'Êtes-vous sûr de vouloir vous déconnecter ?',
+    logoutConfirmText: 'Déconnecter',
+    tonnes: 'tonnes'
+  },
+
+  // Driver
+  driver: {
+    greeting: 'Commandes disponibles',
+    subtitle: 'Choisissez une commande à livrer',
+    availableOrders: 'Nouvelles commandes',
+    activeDeliveries: 'Livraisons en cours',
+    inRoute: 'En route',
+    startDelivery: 'Démarrer la livraison',
+    markDelivered: 'Marquer comme livrée',
+    markDeliveredSuccess: 'Commande marquée comme livrée avec succès!',
+    client: 'Client',
+    distance: 'Distance',
+    estimatedTime: 'Temps estimé',
+    address: 'Adresse',
+    phone: 'Téléphone',
+    ordersMap: 'Carte des commandes',
+    mapDescription: 'Carte interactive avec les positions des clients',
+    mapHint: 'Les épingles bleues indiquent les commandes disponibles',
+    tonnes: 'tonnes',
+    tonnesDelivered: 'tonnes livrées'
+  },
+
+  // Driver Updates
+  driverUpdates: {
+    title: 'Notifications',
+    noNotifications: 'Aucune notification',
+    viewOrders: 'Voir les commandes',
+    urgent: 'Urgent',
+    paymentDay: 'Paiement de la journée',
+    paymentDayMessage: 'Veuillez vous rendre au bureau pour recevoir le paiement de votre journée. Montant: {amount} MAD',
+    newOrderAvailable: 'Nouvelle commande disponible',
+    newOrderMessage: 'Une nouvelle commande de {quantity} tonnes est disponible près de votre position actuelle.',
+    weeklyPaymentReminder: 'Rappel: Paiement hebdomadaire',
+    weeklyPaymentMessage: 'N\'oubliez pas de venir au bureau demain pour recevoir votre paiement hebdomadaire.',
+    deliveryCompleted: 'Livraison complétée',
+    deliveryCompletedMessage: 'Vous avez complété {count} livraisons aujourd\'hui. Excellent travail!',
+    importantMeeting: 'Important: Réunion demain',
+    meetingMessage: 'Réunion obligatoire au bureau demain à {time}. Présence requise.',
+    timeAgo: {
+      minutes: 'Il y a {count} minute',
+      minutesPlural: 'Il y a {count} minutes',
+      hours: 'Il y a {count} heure',
+      hoursPlural: 'Il y a {count} heures',
+      yesterday: 'Hier',
+      days: 'Il y a {count} jour',
+      daysPlural: 'Il y a {count} jours'
+    }
+  },
+
+  // Driver Profile
+  driverProfile: {
+    name: 'Ahmed B.',
+    role: 'Livreur',
+    editProfile: 'Modifier le profil',
+    personalInfo: 'Informations personnelles',
+    phone: 'Téléphone',
+    deliveryZone: 'Zone de livraison',
+    deliveryZoneValue: 'Laayoune, Maroc',
+    recentDeliveries: 'Livraisons récentes',
+    deliveryGoal: 'Objectif de livraisons',
+    rewardMessage: 'Récompense: {amount} MAD pour {goal} livraisons',
+    completed: 'complété',
+    delivered: 'Livrées',
+    remaining: 'Restantes',
+    goal: 'Objectif',
+    remainingMessage: '{count} livraisons restantes pour obtenir votre récompense de {amount} MAD',
+    congratulations: 'Félicitations ! Vous avez atteint votre objectif !',
+    tonnesDelivered: 'tonnes livrées',
+    darkMode: 'Mode sombre',
+    logout: 'Se déconnecter',
+    logoutConfirm: 'Êtes-vous sûr de vouloir vous déconnecter ?',
+    logoutConfirmText: 'Déconnecter'
+  },
+
+  // Navigation
+  navigation: {
+    home: 'Accueil',
+    orders: 'Commandes',
+    notifications: 'Notifications',
+    profile: 'Profil'
+  },
+
+  // Confirm Dialog
+  confirmDialog: {
+    cancel: 'Annuler'
+  }
+}
+
