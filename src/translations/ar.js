@@ -65,7 +65,7 @@ export const ar = {
     deliveryAddress: 'عنوان التوصيل',
     orderSummary: 'ملخص الطلب',
     confirmOrder: 'تأكيد الطلب',
-    tonnes: 'أطنان',
+    tonnes: 'برميل',
     unitPrice: 'السعر الوحدة',
     water: 'الماء',
     serviceFee: 'رسوم الخدمة',
@@ -87,7 +87,7 @@ export const ar = {
   waterTypes: {
     tantan: 'ماء طانطان',
     filtered: 'ماء تصفيه',
-    pricePerTonne: '40 درهم / طن',
+    pricePerTonne: '40 درهم / برميل',
     fixedFee: '+ 5 درهم رسوم (ثابتة)'
   },
 
@@ -98,11 +98,11 @@ export const ar = {
     viewOrder: 'عرض الطلب',
     viewOrders: 'عرض الطلبات',
     inRoute: 'طلبك في الطريق',
-    inRouteMessage: '{driver} بدأ توصيل طلبك من {quantity} طن من ماء طانطان. الوقت المتوقع للوصول: {time}',
+    inRouteMessage: '{driver} بدأ توصيل طلبك من {quantity} برميل من ماء طانطان. الوقت المتوقع للوصول: {time}',
     delivered: 'تم التوصيل',
-    deliveredMessage: 'تم توصيل طلبك من {quantity} طن من الماء المصفى بنجاح إلى عنوانك. شكراً لاستخدامك ألوكوبا!',
+    deliveredMessage: 'تم توصيل طلبك من {quantity} برميل من الماء المصفى بنجاح إلى عنوانك. شكراً لاستخدامك ألوكوبا!',
     confirmed: 'تم تأكيد الطلب',
-    confirmedMessage: 'تم تأكيد طلبك من {quantity} طن من ماء طانطان. سيتم تعيين سائق قريباً.',
+    confirmedMessage: 'تم تأكيد طلبك من {quantity} برميل من ماء طانطان. سيتم تعيين سائق قريباً.',
     driverAssigned: 'تم تعيين سائق',
     driverAssignedMessage: 'تم تعيين {driver} لطلبك. سيتصل بك قبل التوصيل.',
     timeAgo: {
@@ -153,7 +153,7 @@ export const ar = {
     ordersMap: 'خريطة الطلبات',
     mapDescription: 'خريطة تفاعلية مع مواقع العملاء',
     mapHint: 'المشابك الزرقاء تشير إلى الطلبات المتاحة',
-    tonnes: 'أطنان',
+    tonnes: 'برميل',
     tonnesDelivered: 'أطنان تم توصيلها'
   },
 
@@ -166,7 +166,7 @@ export const ar = {
     paymentDay: 'دفع اليوم',
     paymentDayMessage: 'يرجى التوجه إلى المكتب لاستلام دفعة يومك. المبلغ: {amount} درهم',
     newOrderAvailable: 'طلب جديد متاح',
-    newOrderMessage: 'طلب جديد من {quantity} طن متاح بالقرب من موقعك الحالي.',
+    newOrderMessage: 'طلب جديد من {quantity} برميل متاح بالقرب من موقعك الحالي.',
     weeklyPaymentReminder: 'تذكير: الدفع الأسبوعي',
     weeklyPaymentMessage: 'لا تنسَ القدوم إلى المكتب غداً لاستلام دفعتك الأسبوعية.',
     deliveryCompleted: 'تم إكمال التوصيل',
@@ -202,7 +202,7 @@ export const ar = {
     goal: 'الهدف',
     remainingMessage: '{count} توصيلات متبقية للحصول على مكافأتك البالغة {amount} درهم',
     congratulations: 'تهانينا! لقد حققت هدفك!',
-    tonnesDelivered: 'أطنان تم توصيلها',
+    tonnesDelivered: 'برميل تم توصيلها',
     darkMode: 'الوضع الداكن',
     logout: 'تسجيل الخروج',
     logoutConfirm: 'هل أنت متأكد من أنك تريد تسجيل الخروج؟',
@@ -214,7 +214,30 @@ export const ar = {
     home: 'الرئيسية',
     orders: 'الطلبات',
     notifications: 'الإشعارات',
-    profile: 'الملف الشخصي'
+    profile: 'الملف الشخصي',
+    settings: 'الإعدادات'
+  },
+
+  // Settings
+  settings: {
+    title: 'الإعدادات',
+    appearance: 'المظهر',
+    language: 'اللغة',
+    languageDescription: 'اختر لغتك المفضلة',
+    darkMode: 'الوضع الداكن',
+    darkModeDescription: 'تفعيل المظهر الداكن',
+    themeColor: 'لون المظهر',
+    themeColorDescription: 'خصص اللون الرئيسي للتطبيق',
+    support: 'الدعم',
+    contact: 'اتصل بنا',
+    contactDescription: 'تحتاج مساعدة؟ اتصل بنا',
+    phoneNumber: 'رقم الهاتف',
+    phone: '+212 6XX XXX XXX',
+    donation: 'تبرع',
+    donationDescription: 'ادعم المشروع',
+    donationPlace: 'تبرع الآن',
+    about: 'حول',
+    version: 'الإصدار 1.0.0'
   },
 
   // Confirm Dialog

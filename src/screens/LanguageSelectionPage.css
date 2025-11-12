@@ -1,0 +1,274 @@
+/* ===== iOS 26 Liquid Glass - Language Selection Page ===== */
+
+.language-selection-page {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.language-selection-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, 
+    #F5F7FA 0%, 
+    #E8EDF2 25%, 
+    #F0F4F8 50%, 
+    #E3EAF0 75%, 
+    #F5F7FA 100%
+  );
+  overflow: hidden;
+  animation: waterFlow 25s ease-in-out infinite;
+}
+
+.dark .language-selection-background {
+  background: linear-gradient(135deg, 
+    #1A1F2E 0%, 
+    #1E2332 25%, 
+    #1C2130 50%, 
+    #1F2433 75%, 
+    #1A1F2E 100%
+  );
+}
+
+@keyframes waterFlow {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.01) rotate(0.5deg);
+    opacity: 0.98;
+  }
+}
+
+.water-pattern {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(10, 132, 255, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(99, 199, 239, 0.025) 0%, transparent 50%),
+    radial-gradient(circle at 40% 20%, rgba(90, 200, 250, 0.02) 0%, transparent 50%),
+    radial-gradient(circle at 60% 70%, rgba(10, 132, 255, 0.025) 0%, transparent 50%);
+  animation: float 25s ease-in-out infinite;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.dark .water-pattern {
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(10, 132, 255, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(100, 210, 255, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 40% 20%, rgba(90, 200, 250, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 60% 70%, rgba(10, 132, 255, 0.07) 0%, transparent 50%);
+  opacity: 0.4;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+    opacity: 0.6;
+  }
+  33% {
+    transform: translateY(-10px) rotate(1deg) scale(1.01);
+    opacity: 0.7;
+  }
+  66% {
+    transform: translateY(8px) rotate(-1deg) scale(0.99);
+    opacity: 0.65;
+  }
+}
+
+.language-selection-content {
+  position: relative;
+  z-index: 10;
+  padding: var(--spacing-2xl) var(--spacing-lg);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(40px) saturate(180%) brightness(102%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%) brightness(102%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.08),
+    0 4px 16px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.dark .language-selection-content {
+  background: rgba(28, 28, 30, 0.75);
+  backdrop-filter: blur(40px) saturate(160%) brightness(98%);
+  -webkit-backdrop-filter: blur(40px) saturate(160%) brightness(98%);
+  border-left-color: rgba(255, 255, 255, 0.1);
+  border-right-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 4px 16px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.language-selection-header {
+  text-align: center;
+  margin-bottom: var(--spacing-2xl);
+}
+
+.language-icon {
+  color: var(--ios-blue);
+  margin-bottom: var(--spacing-md);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.language-selection-title {
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: 0.37px;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-sm);
+  line-height: 1.2;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.language-selection-subtitle {
+  font-size: 17px;
+  color: var(--text-tertiary);
+  letter-spacing: -0.41px;
+  font-weight: 400;
+}
+
+.language-options-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  max-width: 500px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.language-option-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-lg);
+  background: var(--glass-bg-light-weak);
+  backdrop-filter: blur(8px) saturate(180%);
+  -webkit-backdrop-filter: blur(8px) saturate(180%);
+  border: 1px solid var(--glass-border-light-weak);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  -webkit-tap-highlight-color: transparent;
+  box-shadow: var(--glass-shadow-sm);
+  text-align: left;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.language-option-btn:active {
+  transform: scale(0.98);
+}
+
+.language-option-btn.active {
+  background: rgba(10, 132, 255, 0.12);
+  border-color: rgba(10, 132, 255, 0.4);
+  box-shadow: 
+    0 0 0 2px rgba(10, 132, 255, 0.2),
+    var(--glass-shadow-sm);
+}
+
+.dark .language-option-btn {
+  background: var(--glass-bg-dark-weak);
+  border-color: var(--glass-border-dark-weak);
+}
+
+.dark .language-option-btn.active {
+  background: rgba(10, 132, 255, 0.18);
+  border-color: rgba(10, 132, 255, 0.5);
+}
+
+.language-option-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.language-option-name {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.41px;
+  color: var(--text-primary);
+}
+
+.language-option-code {
+  font-size: 15px;
+  color: var(--text-tertiary);
+  letter-spacing: -0.08px;
+}
+
+.language-check {
+  color: var(--ios-blue);
+  flex-shrink: 0;
+  margin-right: var(--spacing-sm);
+}
+
+.language-arrow {
+  color: var(--ios-blue);
+  flex-shrink: 0;
+  opacity: 0.7;
+  transition: transform var(--transition-base);
+}
+
+.language-option-btn.active .language-arrow {
+  transform: translateX(4px);
+}
+
+/* RTL Support */
+[dir="rtl"] .language-option-btn {
+  text-align: right;
+}
+
+[dir="rtl"] .language-option-content {
+  align-items: flex-end;
+}
+
+[dir="rtl"] .language-arrow {
+  transform: rotate(180deg);
+}
+
+[dir="rtl"] .language-option-btn.active .language-arrow {
+  transform: rotate(180deg) translateX(4px);
+}
+
+/* Tablet support */
+@media (min-width: 768px) {
+  .language-selection-content {
+    padding: calc(var(--spacing-2xl) * 1.3) calc(var(--spacing-lg) * 1.5);
+  }
+
+  .language-selection-title {
+    font-size: 40px;
+  }
+
+  .language-option-btn {
+    padding: calc(var(--spacing-lg) * 1.2);
+  }
+
+  .language-option-name {
+    font-size: 22px;
+  }
+}
+
+
+
+
+

@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { MapPin, Package, CheckCircle, Navigation, User, Phone } from 'lucide-react'
 import { useLanguage } from '../context/LanguageContext'
-import LanguageToggle from '../components/LanguageToggle'
 import logo from '../logoll.png'
 import NotificationCard from '../components/NotificationCard'
 import './DriverPage.css'
@@ -107,7 +106,6 @@ const DriverPage = () => {
       <div className="driver-header">
         <h1 className="driver-greeting">{t('driver.greeting')}</h1>
         <p className="driver-subtitle">{t('driver.subtitle')}</p>
-        <LanguageToggle />
       </div>
 
       <div className="scrollable-content">

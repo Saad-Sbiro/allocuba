@@ -2,9 +2,8 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { User, Phone, MapPin, Package, LogOut, Edit } from 'lucide-react'
 import { useLanguage } from '../context/LanguageContext'
-import LanguageToggle from '../components/LanguageToggle'
+import { Settings } from 'lucide-react'
 import ConfirmDialog from '../components/ConfirmDialog'
-import ThemeToggle from '../components/ThemeToggle'
 import './ProfilePage.css'
 
 const ProfilePage = ({ user }) => {
@@ -54,6 +53,13 @@ const ProfilePage = ({ user }) => {
   return (
     <div className="profile-page">
       <div className="profile-header">
+        <button 
+          className="profile-settings-btn"
+          onClick={() => navigate('/client/settings')}
+          aria-label={t('navigation.settings')}
+        >
+          <Settings size={24} />
+        </button>
         <div className="profile-avatar">
           <User size={48} />
         </div>
@@ -113,25 +119,13 @@ const ProfilePage = ({ user }) => {
         </div>
 
         <div className="profile-section">
-          <div className="settings-card card">
-            <div className="settings-item">
-              <div className="settings-label">
-                <span>{t('profile.darkMode')}</span>
-              </div>
-              <ThemeToggle />
-            </div>
-          </div>
-        </div>
-
-        <div className="profile-section">
-          <div className="settings-card card">
-            <div className="settings-item">
-              <div className="settings-label">
-                <span>{t('common.language')}</span>
-              </div>
-              <LanguageToggle />
-            </div>
-          </div>
+          <button 
+            className="btn btn-secondary btn-full settings-btn"
+            onClick={() => navigate('/client/settings')}
+          >
+            <Settings size={20} />
+            {t('navigation.settings')}
+          </button>
         </div>
 
         <div className="profile-section">

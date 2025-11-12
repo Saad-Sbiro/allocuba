@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { Home, Package, User, MapPin, Phone } from 'lucide-react'
 import { useLanguage } from '../context/LanguageContext'
-import LanguageToggle from '../components/LanguageToggle'
 import logo from '../logoll.png'
 import NotificationCard from '../components/NotificationCard'
 import './ClientHome.css'
@@ -70,7 +69,6 @@ const ClientHome = ({ user }) => {
             </h1>
             <p className="greeting-subtitle">{t('clientHome.subtitle')}</p>
           </div>
-          <LanguageToggle />
         </div>
 
         <div className="main-action-card">
@@ -120,7 +118,7 @@ const ClientHome = ({ user }) => {
               <div className="order-header">
                 <div className="order-info">
                   <h4 className="order-type">{order.type}</h4>
-                  <p className="order-quantity">{order.quantity} tonnes</p>
+                  <p className="order-quantity">{order.quantity} {t('order.tonnes')}</p>
                 </div>
                 <span className={`status-badge status-${order.status.toLowerCase().replace(' ', '-')}`}>
                   {order.status === 'En cours' ? t('clientHome.status.inProgress') : t('clientHome.status.delivered')}

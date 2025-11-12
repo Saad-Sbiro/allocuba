@@ -65,7 +65,7 @@ export const fr = {
     deliveryAddress: 'Adresse de livraison',
     orderSummary: 'Résumé de la commande',
     confirmOrder: 'Confirmer la commande',
-    tonnes: 'tonnes',
+    tonnes: 'برميل',
     unitPrice: 'Prix unitaire',
     water: 'Eau',
     serviceFee: 'Frais de service',
@@ -87,7 +87,7 @@ export const fr = {
   waterTypes: {
     tantan: 'Eau de Tantan',
     filtered: 'Eau filtrée',
-    pricePerTonne: '40 MAD / tonne',
+    pricePerTonne: '40 MAD / برميل',
     fixedFee: '+ 5 MAD frais (fixe)'
   },
 
@@ -98,11 +98,11 @@ export const fr = {
     viewOrder: 'Voir la commande',
     viewOrders: 'Voir les commandes',
     inRoute: 'Votre commande est en route',
-    inRouteMessage: '{driver} a commencé la livraison de votre commande de {quantity} tonnes d\'eau de Tantan. Arrivée estimée: {time}',
+    inRouteMessage: '{driver} a commencé la livraison de votre commande de {quantity} برميل d\'eau de Tantan. Arrivée estimée: {time}',
     delivered: 'Commande livrée',
-    deliveredMessage: 'Votre commande de {quantity} tonnes d\'eau filtrée a été livrée avec succès à votre adresse. Merci d\'avoir utilisé Allocuba!',
+    deliveredMessage: 'Votre commande de {quantity} برميل d\'eau filtrée a été livrée avec succès à votre adresse. Merci d\'avoir utilisé Allocuba!',
     confirmed: 'Commande confirmée',
-    confirmedMessage: 'Votre commande de {quantity} tonnes d\'eau de Tantan a été confirmée. Un livreur sera assigné sous peu.',
+    confirmedMessage: 'Votre commande de {quantity} برميل d\'eau de Tantan a été confirmée. Un livreur sera assigné sous peu.',
     driverAssigned: 'Livreur assigné',
     driverAssignedMessage: '{driver} a été assigné à votre commande. Il vous contactera avant la livraison.',
     timeAgo: {
@@ -153,7 +153,7 @@ export const fr = {
     ordersMap: 'Carte des commandes',
     mapDescription: 'Carte interactive avec les positions des clients',
     mapHint: 'Les épingles bleues indiquent les commandes disponibles',
-    tonnes: 'tonnes',
+    tonnes: 'برميل',
     tonnesDelivered: 'tonnes livrées'
   },
 
@@ -166,7 +166,7 @@ export const fr = {
     paymentDay: 'Paiement de la journée',
     paymentDayMessage: 'Veuillez vous rendre au bureau pour recevoir le paiement de votre journée. Montant: {amount} MAD',
     newOrderAvailable: 'Nouvelle commande disponible',
-    newOrderMessage: 'Une nouvelle commande de {quantity} tonnes est disponible près de votre position actuelle.',
+    newOrderMessage: 'Une nouvelle commande de {quantity} برميل est disponible près de votre position actuelle.',
     weeklyPaymentReminder: 'Rappel: Paiement hebdomadaire',
     weeklyPaymentMessage: 'N\'oubliez pas de venir au bureau demain pour recevoir votre paiement hebdomadaire.',
     deliveryCompleted: 'Livraison complétée',
@@ -202,7 +202,7 @@ export const fr = {
     goal: 'Objectif',
     remainingMessage: '{count} livraisons restantes pour obtenir votre récompense de {amount} MAD',
     congratulations: 'Félicitations ! Vous avez atteint votre objectif !',
-    tonnesDelivered: 'tonnes livrées',
+    tonnesDelivered: 'برميل livrées',
     darkMode: 'Mode sombre',
     logout: 'Se déconnecter',
     logoutConfirm: 'Êtes-vous sûr de vouloir vous déconnecter ?',
@@ -214,7 +214,30 @@ export const fr = {
     home: 'Accueil',
     orders: 'Commandes',
     notifications: 'Notifications',
-    profile: 'Profil'
+    profile: 'Profil',
+    settings: 'Paramètres'
+  },
+
+  // Settings
+  settings: {
+    title: 'Paramètres',
+    appearance: 'Apparence',
+    language: 'Langue',
+    languageDescription: 'Choisissez votre langue préférée',
+    darkMode: 'Mode sombre',
+    darkModeDescription: 'Activer le thème sombre',
+    themeColor: 'Couleur du thème',
+    themeColorDescription: 'Personnalisez la couleur principale de l\'application',
+    support: 'Support',
+    contact: 'Contact',
+    contactDescription: 'Besoin d\'aide? Contactez-nous',
+    phoneNumber: 'Numéro de téléphone',
+    phone: '+212 6XX XXX XXX',
+    donation: 'Don',
+    donationDescription: 'Soutenir le projet',
+    donationPlace: 'Faire un don',
+    about: 'À propos',
+    version: 'Version 1.0.0'
   },
 
   // Confirm Dialog

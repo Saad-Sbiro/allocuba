@@ -99,7 +99,7 @@ const OrderPage = () => {
                   <input
                     type="range"
                     min="1"
-                    max="10"
+                    max="25"
                     value={quantity}
                     onChange={(e) => setQuantity(parseInt(e.target.value))}
                     className="quantity-slider"
@@ -110,13 +110,13 @@ const OrderPage = () => {
                     alt="Allocuba" 
                     className="slider-thumb-logo"
                     style={{
-                      left: `calc(${((quantity - 1) / 9) * 100}% - 16px)`
+                      left: `calc(${((quantity - 1) / 24) * 100}% - 16px)`
                     }}
                   />
                 </div>
                 <div className="quantity-labels">
                   <span>1</span>
-                  <span>10</span>
+                  <span>25</span>
                 </div>
               </div>
             </div>

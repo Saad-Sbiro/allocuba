@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Phone, User, ArrowRight, Lock, Key } from 'lucide-react'
 import { useLanguage } from '../context/LanguageContext'
-import LanguageSelector from '../components/LanguageSelector'
 import logo from '../logoll.png'
 import './SignUpPage.css'
 
@@ -50,13 +49,18 @@ const SignUpPage = ({ setUser, setUserRole }) => {
       button.classList.add('touched')
     }
     setTimeout(() => {
-      setUser({
+      const userData = {
         firstName: clientFormData.firstName,
         lastName: clientFormData.lastName,
         phone: clientFormData.phone
+      }
+      // Navigate to language selection page with user data
+      navigate('/signup/language', {
+        state: {
+          userData: userData,
+          role: 'client'
+        }
       })
-      setUserRole('client')
-      navigate('/client/home')
     }, 650)
     isQuickTap.current = false
   }
@@ -94,12 +98,17 @@ const SignUpPage = ({ setUser, setUserRole }) => {
     }
     setTimeout(() => {
       // In a real app, this would verify credentials with the server
-      setUser({
+      const userData = {
         driverId: driverFormData.driverId,
         name: 'Ahmed B.' // This would come from the server after login
+      }
+      // Navigate to language selection page with user data
+      navigate('/signup/language', {
+        state: {
+          userData: userData,
+          role: 'driver'
+        }
       })
-      setUserRole('driver')
-      navigate('/driver/home')
     }, 650)
     isQuickTap.current = false
   }
@@ -110,8 +119,6 @@ const SignUpPage = ({ setUser, setUserRole }) => {
         <div className="water-pattern"></div>
       </div>
       <div className="signup-content">
-        <LanguageSelector />
-        
         <h2 className="signup-title">
           {t('signup.title')}
         </h2>
@@ -120,6 +127,10 @@ const SignUpPage = ({ setUser, setUserRole }) => {
         </p>
 
         <div className="role-selector">
+          <div 
+            key={role}
+            className={`role-slider ${role === 'driver' ? 'slide-right' : 'slide-left'}`}
+          ></div>
           <button
             type="button"
             className={`role-btn ${role === 'client' ? 'active' : ''}`}

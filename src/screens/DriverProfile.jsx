@@ -1,10 +1,8 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { User, Phone, MapPin, Package, LogOut, Edit, Trophy, Target } from 'lucide-react'
+import { User, Phone, MapPin, Package, LogOut, Edit, Trophy, Target, Settings } from 'lucide-react'
 import { useLanguage } from '../context/LanguageContext'
-import LanguageToggle from '../components/LanguageToggle'
 import ConfirmDialog from '../components/ConfirmDialog'
-import ThemeToggle from '../components/ThemeToggle'
 import './DriverProfile.css'
 
 const DriverProfile = () => {
@@ -57,6 +55,13 @@ const DriverProfile = () => {
   return (
     <div className="driver-profile-page">
       <div className="driver-profile-header">
+        <button 
+          className="profile-settings-btn"
+          onClick={() => navigate('/driver/settings')}
+          aria-label={t('navigation.settings')}
+        >
+          <Settings size={24} />
+        </button>
         <div className="driver-profile-avatar">
           <User size={48} />
         </div>
@@ -167,25 +172,13 @@ const DriverProfile = () => {
         </div>
 
         <div className="profile-section">
-          <div className="settings-card card">
-            <div className="settings-item">
-              <div className="settings-label">
-                <span>{t('driverProfile.darkMode')}</span>
-              </div>
-              <ThemeToggle />
-            </div>
-          </div>
-        </div>
-
-        <div className="profile-section">
-          <div className="settings-card card">
-            <div className="settings-item">
-              <div className="settings-label">
-                <span>{t('common.language')}</span>
-              </div>
-              <LanguageToggle />
-            </div>
-          </div>
+          <button 
+            className="btn btn-secondary btn-full settings-btn"
+            onClick={() => navigate('/driver/settings')}
+          >
+            <Settings size={20} />
+            {t('navigation.settings')}
+          </button>
         </div>
 
         <div className="profile-section">
