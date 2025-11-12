@@ -1,53 +1,95 @@
-# Allocuba - Mobile App Prototype
+# Allocuba - Water Delivery Mobile App
 
-A complete mobile app UI/UX prototype for **Allocuba**, a water delivery service application for Laayoune, Morocco. The app connects customers with local water truck drivers ("cuba") for silent, organized home delivery.
+A modern, complete frontend prototype for **Allocuba**, a water delivery service application designed for Laayoune, Morocco. The app connects customers with local water truck drivers ("cuba") for convenient home delivery of water barrels (برميل).
 
-## Features
+![Allocuba](https://img.shields.io/badge/Status-Stable%20Frontend-brightgreen)
+![React](https://img.shields.io/badge/React-18-blue)
+![Vite](https://img.shields.io/badge/Vite-Latest-purple)
 
-### Client Features
-- **Splash Screen** - Beautiful animated welcome screen with tagline
-- **Sign Up** - Registration with phone, name, and CIN upload (recto/verso)
-- **Home Page** - Greeting, quick order button, recent orders list, and contact info for drivers without smartphones
-- **Order Page** - Quantity selector, water type selection (Tantan/Filtrée), map for delivery location, order summary
-- **Updates Page** - Push notifications for delivery updates and alerts
-- **Profile Page** - Personal information, order history, logout
+## ✨ Features
 
-### Driver Features
-- **Driver Home** - Available orders with distance, client details, map view
-- **Delivery Management** - Start delivery, mark as delivered
-- **Driver Profile** - Progress tracking (100 deliveries goal for 100 MAD reward), delivery history
+### 🎨 Design System
+- **iOS 26 Liquid Glass Style** - Modern glassmorphism design with advanced backdrop filters
+- **Dark/Light Mode** - Full theme support with smooth transitions
+- **Theme Color Customization** - 8 preset colors + custom color picker
+- **RTL Support** - Full Arabic and French language support
+- **Responsive Design** - Optimized for mobile devices (max-width: 414px)
+- **Smooth Animations** - Spring-like transitions and micro-interactions
 
-## Design System
+### 👤 Client Features
+- **Splash Screen** - Animated welcome screen with liquid glass effects
+- **Sign Up** - Role selection (Client/Driver) with smooth sliding animations
+- **Home Page** - Personalized greeting, quick order button, recent orders
+- **Order Page** - Quantity selector (1-25 برميل), water type selection, order summary
+- **Updates Page** - Real-time notifications with unread indicators
+- **Profile Page** - Personal information, order history, settings access
+- **Edit Profile** - Update name and phone number
+- **Settings Page** - Language, theme, color customization, support, donations
 
-- **Colors**: Primary (#1a2e49), Secondary (#F1F1F1), Accent Blue (#4A90E2)
-- **Fonts**: Inter and Poppins
-- **Icons**: Lucide React (simple line style)
-- **Style**: Modern, minimalist, clean with rounded cards and soft shadows
+### 🚚 Driver Features
+- **Driver Home** - Available orders with client details, distance, and map view
+- **Active Deliveries** - Track ongoing deliveries with navigation
+- **Report Issues** - Report client problems (no answer, wrong address, etc.)
+- **Mark as Delivered** - Complete delivery workflow
+- **Driver Profile** - Progress tracking (100 deliveries goal), statistics, delivery history
+- **Driver Updates** - Notifications for new orders and urgent alerts
 
-## Languages
+### 🛠️ Additional Features
+- **Language Selection** - Arabic (RTL) and French support
+- **Theme Toggle** - Switch between dark and light modes
+- **Color Themes** - 8 preset colors + custom color picker
+- **Support Contact** - Direct phone call integration
+- **Donation System** - Support the project with preset or custom amounts
+- **Scroll Lock** - Prevents background scrolling when modals are open
+- **Payment Method** - Cash on Delivery (COD) only
 
-The app supports both **Arabic** and **French** languages.
+## 🎨 Design Highlights
 
-## Getting Started
+### Liquid Glass Effects
+- Advanced backdrop filters with blur and saturation
+- Multi-layer shadows and highlights
+- Animated gradients and shimmer effects
+- SVG distortion filters for depth
+- Glassmorphism cards with transparency
+
+### Color System
+- **Primary Colors**: iOS Blue (#0A84FF), Orange (#FF9500), Pink (#FF2D55)
+- **8 Preset Themes**: Blue, Green, Orange, Red, Purple, Indigo, Pink, Turquoise
+- **Custom Color Picker**: Full spectrum color selection
+- **Dark Mode**: Optimized color schemes for both themes
+
+### Typography
+- **Primary Font**: Faculty Glyphic, Merienda, Inter
+- **Arabic Font**: Noto Sans Arabic
+- **System Fonts**: SF Pro Display, SF Pro Text (iOS fallback)
+
+## 🚀 Getting Started
 
 ### Prerequisites
 
-- Node.js (v16 or higher)
-- npm or yarn
+- **Node.js** (v16 or higher)
+- **npm** or **yarn**
 
 ### Installation
 
-1. Install dependencies:
+1. **Clone the repository:**
+```bash
+git clone https://github.com/Saad-Sbiro/allocuba.git
+cd allocuba
+```
+
+2. **Install dependencies:**
 ```bash
 npm install
 ```
 
-2. Start the development server:
+3. **Start the development server:**
 ```bash
 npm run dev
 ```
 
-3. Open your browser and navigate to `http://localhost:3000`
+4. **Open your browser:**
+Navigate to `http://localhost:5173` (or the port shown in terminal)
 
 ### Build for Production
 
@@ -55,132 +97,205 @@ npm run dev
 npm run build
 ```
 
-## Project Structure
+The production build will be in the `dist/` directory.
+
+## 📁 Project Structure
 
 ```
 allocuba/
 ├── src/
 │   ├── components/
-│   │   ├── BottomNavigation.jsx
-│   │   └── BottomNavigation.css
+│   │   ├── BottomNavigation.jsx          # Bottom navigation bar
+│   │   ├── BottomNavigation.css
+│   │   ├── LanguageSelector.jsx          # Language switcher
+│   │   ├── ThemeToggle.jsx               # Dark/light mode toggle
+│   │   ├── NotificationCard.jsx         # Toast notifications
+│   │   ├── ConfirmDialog.jsx            # Confirmation dialogs
+│   │   ├── ConfirmDialog.css
+│   │   ├── DonationModal.jsx            # Donation modal
+│   │   ├── DonationModal.css
+│   │   ├── DriverReportModal.jsx        # Driver issue reporting
+│   │   └── DriverReportModal.css
 │   ├── screens/
-│   │   ├── SplashScreen.jsx
-│   │   ├── SignUpPage.jsx
-│   │   ├── ClientHome.jsx
-│   │   ├── OrderPage.jsx
-│   │   ├── DriverPage.jsx
-│   │   ├── UpdatesPage.jsx
-│   │   ├── ProfilePage.jsx
-│   │   └── DriverProfile.jsx
-│   ├── App.jsx
-│   ├── main.jsx
-│   └── index.css
-├── index.html
+│   │   ├── SplashScreen.jsx             # Welcome screen
+│   │   ├── SignUpPage.jsx               # Registration
+│   │   ├── SignUpPage.css
+│   │   ├── LanguageSelectionPage.jsx   # Language selection
+│   │   ├── ClientHome.jsx               # Client home page
+│   │   ├── OrderPage.jsx                # Order creation
+│   │   ├── OrderPage.css
+│   │   ├── UpdatesPage.jsx              # Client notifications
+│   │   ├── ProfilePage.jsx               # Client profile
+│   │   ├── ProfilePage.css
+│   │   ├── EditProfilePage.jsx          # Edit profile
+│   │   ├── EditProfilePage.css
+│   │   ├── SettingsPage.jsx              # Settings page
+│   │   ├── SettingsPage.css
+│   │   ├── DriverPage.jsx                # Driver home
+│   │   ├── DriverPage.css
+│   │   ├── DriverUpdatesPage.jsx        # Driver notifications
+│   │   ├── DriverProfile.jsx             # Driver profile
+│   │   └── DriverProfile.css
+│   ├── context/
+│   │   ├── LanguageContext.jsx           # Language state management
+│   │   ├── ThemeContext.jsx              # Theme state management
+│   │   └── ThemeColorContext.jsx         # Theme color management
+│   ├── translations/
+│   │   ├── fr.js                         # French translations
+│   │   └── ar.js                         # Arabic translations
+│   ├── App.jsx                           # Main app component
+│   ├── main.jsx                          # Entry point
+│   └── index.css                         # Global styles
+├── index.html                            # HTML template with SVG filters
 ├── package.json
-└── vite.config.js
+├── vite.config.js
+└── README.md
 ```
 
-## Routes
+## 🛣️ Routes
 
+### Public Routes
 - `/` - Splash Screen
-- `/signup` - Sign Up Page (choose Client or Driver)
+- `/signup` - Sign Up Page (role selection)
+- `/signup/language` - Language Selection
+
+### Client Routes
 - `/client/home` - Client Home Page
 - `/client/order` - New Order Page
 - `/client/updates` - Notifications Page
 - `/client/profile` - Client Profile
+- `/client/edit-profile` - Edit Profile
+- `/client/settings` - Settings Page
+
+### Driver Routes
 - `/driver/home` - Driver Home (Available Orders)
-- `/driver/profile` - Driver Profile with Progress Tracking
+- `/driver/updates` - Driver Notifications
+- `/driver/profile` - Driver Profile with Progress
+- `/driver/edit-profile` - Edit Profile
+- `/driver/settings` - Settings Page
 
-## Features in Detail
+## 🌍 Internationalization
 
-### Splash Screen
-- Animated water-themed background
-- Logo with droplet icon
-- Tagline: "كسب طمأنينة، الماء فݣاع المدينة."
-- Auto-navigates to signup after 3 seconds
+The app supports two languages with full RTL support:
 
-### Sign Up
-- Role selection (Client/Driver)
-- Phone number input
-- First name and last name
-- CIN document upload (recto and verso)
-- Beautiful water-pattern background
+- **Arabic (ar)** - Right-to-left layout
+- **French (fr)** - Left-to-right layout
 
-### Client Home
-- Personalized greeting
-- Large "Commander de l'eau" button
-- Recent orders with status badges
-- List of drivers without smartphones (with phone numbers)
+All text content is managed through translation files in `src/translations/`.
 
-### Order Page
-- Quantity slider (1-10 bidons)
-- Water type selection (Tantan: 15 MAD, Filtrée: 20 MAD)
-- Map placeholder for delivery location
-- Order summary with total price
-- Estimated delivery time
+## 🎯 Key Features in Detail
 
-### Driver Page
-- List of available orders with:
-  - Client name and details
-  - Distance and estimated time
-  - Delivery address
-  - Client phone number
-- Active deliveries section
-- Map view with client locations
-- "Start delivery" and "Mark as delivered" buttons
+### Order System
+- **Water Types**: Tantan (40 MAD/برميل) and Filtrée (40 MAD/برميل)
+- **Quantity Range**: 1-25 برميل (barrels)
+- **Payment**: Cash on Delivery (COD) only
+- **Order Summary**: Real-time price calculation
 
-### Driver Profile
-- Progress tracking for 100 deliveries goal
-- Visual progress bar
-- Statistics (completed, remaining, goal)
-- Reward information (100 MAD)
-- Delivery history
+### Driver Reporting System
+Drivers can report issues with deliveries:
+- Client not answering phone
+- Wrong address
+- Client not available
+- Client refused order
+- Other issues (with custom description)
 
-### Updates/Notifications
-- List of all notifications
-- Unread indicators
-- Click to view related orders
-- Different notification types (delivery, delivered, confirmed, reminder)
+### Progress Tracking
+- **Goal**: 100 deliveries
+- **Reward**: 100 MAD upon completion
+- **Visual Progress Bar**: Animated with shimmer effect
+- **Statistics**: Completed, remaining, percentage
 
-## Customization
+### Settings & Customization
+- **Language**: Switch between Arabic and French
+- **Theme**: Dark/Light mode toggle
+- **Color**: 8 preset colors + custom picker
+- **Support**: Direct phone call button
+- **Donation**: Preset amounts (20, 50, 100, 200, 500 MAD) or custom
 
-### Adding Your Logo
-
-Replace the Droplet icon in `src/screens/SplashScreen.jsx` with your logo:
-
-```jsx
-<img src="/path/to/your/logo.png" alt="Allocuba" className="logo-image" />
-```
-
-### Colors
-
-Modify colors in `src/index.css`:
-- `--primary-color`: Main brand color
-- `--secondary-color`: Background/secondary color
-- `--accent-blue`: Accent color for highlights
-
-## Technologies Used
+## 🛠️ Technologies Used
 
 - **React 18** - UI library
-- **React Router DOM** - Navigation
-- **Vite** - Build tool
-- **Lucide React** - Icons
-- **CSS3** - Styling with custom properties
+- **React Router DOM v6** - Navigation and routing
+- **Vite** - Build tool and dev server
+- **Lucide React** - Icon library
+- **CSS3** - Advanced styling with:
+  - Custom properties (CSS variables)
+  - Backdrop filters
+  - CSS Grid & Flexbox
+  - Keyframe animations
+  - SVG filters
 
-## Browser Support
+## 📱 Browser Support
 
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
+- ✅ Chrome (latest)
+- ✅ Firefox (latest)
+- ✅ Safari (latest)
+- ✅ Edge (latest)
+- ✅ Mobile browsers (iOS Safari, Chrome Mobile)
 
-## Mobile View
+## 🎨 Customization
 
-The app is designed for mobile devices (max-width: 414px) and simulates a mobile app experience in the browser.
+### Changing Theme Colors
 
-## License
+The app uses CSS custom properties for theming. Modify in `src/index.css`:
+
+```css
+:root {
+  --ios-blue: #0A84FF;
+  --ios-orange: #FF9500;
+  --ios-pink: #FF2D55;
+  /* ... */
+}
+```
+
+Or use the built-in color picker in Settings!
+
+### Adding Translations
+
+Edit `src/translations/fr.js` and `src/translations/ar.js`:
+
+```javascript
+export default {
+  // Add your translation keys here
+  myKey: 'My Translation'
+}
+```
+
+### Modifying Liquid Glass Effects
+
+Adjust SVG filters in `index.html`:
+
+```html
+<filter id="glass-distortion">
+  <feTurbulence baseFrequency="0.004 0.004" />
+  <!-- Adjust values for different effects -->
+</filter>
+```
+
+## 📊 Project Status
+
+- ✅ **Frontend**: Complete and stable
+- ⏳ **Backend**: Pending (Laravel integration planned)
+
+## 🤝 Contributing
+
+This is currently a prototype project. Contributions and suggestions are welcome!
+
+## 📄 License
 
 This is a prototype for demonstration purposes.
 
+## 👤 Author
 
+**Saad Sbiro**
+- GitHub: [@Saad-Sbiro](https://github.com/Saad-Sbiro)
 
+## 🙏 Acknowledgments
+
+- Design inspired by iOS 26 liquid glass aesthetic
+- Icons provided by [Lucide](https://lucide.dev)
+- Fonts: Faculty Glyphic, Merienda, Noto Sans Arabic
+
+---
+
+**Note**: This is a frontend prototype. Backend integration with Laravel is planned for future development.
