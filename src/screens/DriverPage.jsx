@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { MapPin, Package, CheckCircle, Navigation, User, Phone } from 'lucide-react'
+import { MapPin, Package, CheckCircle, Navigation, User, Phone, AlertTriangle } from 'lucide-react'
 import { useLanguage } from '../context/LanguageContext'
 import logo from '../logoll.png'
 import NotificationCard from '../components/NotificationCard'
+import DriverReportModal from '../components/DriverReportModal'
 import './DriverPage.css'
 
 const DriverPage = () => {
@@ -13,6 +14,9 @@ const DriverPage = () => {
   const isQuickTap = React.useRef(false)
   const [selectedOrder, setSelectedOrder] = useState(null)
   const [showNotification, setShowNotification] = useState(false)
+  const [showReportModal, setShowReportModal] = useState(false)
+  const [reportOrderId, setReportOrderId] = useState(null)
+  const [reportClientName, setReportClientName] = useState('')
   
   // Count unread notifications (in a real app, this would come from state/API)
   // DriverUpdatesPage has 2 unread notifications
@@ -82,6 +86,22 @@ const DriverPage = () => {
     isQuickTap.current = false
   }
 
+  const handleReportIssue = (orderId, clientName) => {
+    setReportOrderId(orderId)
+    setReportClientName(clientName)
+    setShowReportModal(true)
+  }
+
+  const handleSubmitReport = (reportData) => {
+    // In a real app, this would send the report to the backend
+    console.log('Report submitted:', reportData)
+    // Show success notification
+    setShowNotification(true)
+    setShowReportModal(false)
+    setReportOrderId(null)
+    setReportClientName('')
+  }
+
   const handleTouchStart = () => {
     touchStartTime.current = Date.now()
     isQuickTap.current = false
@@ -128,16 +148,25 @@ const DriverPage = () => {
                   <MapPin size={16} />
                   <span>{order.address}</span>
                 </div>
-                <button
-                  className="btn btn-primary btn-full delivery-btn"
-                  onClick={() => handleMarkDelivered(order.id)}
-                  onTouchStart={handleTouchStart}
-                  onTouchEnd={handleTouchEnd}
-                >
-                  <CheckCircle size={20} />
-                  <span>{t('driver.markDelivered')}</span>
-                  <img src={logo} alt="Allocuba" className="btn-logo-moving" />
-                </button>
+                <div className="delivery-actions">
+                  <button
+                    className="btn btn-secondary report-btn"
+                    onClick={() => handleReportIssue(order.id, order.clientName)}
+                  >
+                    <AlertTriangle size={18} />
+                    <span>{t('driver.reportIssue')}</span>
+                  </button>
+                  <button
+                    className="btn btn-primary delivery-btn"
+                    onClick={() => handleMarkDelivered(order.id)}
+                    onTouchStart={handleTouchStart}
+                    onTouchEnd={handleTouchEnd}
+                  >
+                    <CheckCircle size={20} />
+                    <span>{t('driver.markDelivered')}</span>
+                    <img src={logo} alt="Allocuba" className="btn-logo-moving" />
+                  </button>
+                </div>
               </div>
             ))}
           </div>
@@ -212,6 +241,18 @@ const DriverPage = () => {
           duration={4000}
         />
       )}
+
+      <DriverReportModal
+        isOpen={showReportModal}
+        onClose={() => {
+          setShowReportModal(false)
+          setReportOrderId(null)
+          setReportClientName('')
+        }}
+        onReport={handleSubmitReport}
+        orderId={reportOrderId}
+        clientName={reportClientName}
+      />
     </div>
   )
 }

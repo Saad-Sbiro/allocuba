@@ -43,7 +43,7 @@ export const ar = {
   clientHome: {
     greeting: 'مرحباً، {name}',
     greetingDefault: 'مرحباً',
-    subtitle: 'اطلب الماء بصمت',
+    subtitle: 'توصيل الماء إلى باب منزلك',
     needWater: 'تحتاج ماء؟',
     orderNow: 'اطلب الآن واحصل على التوصيل بسرعة',
     orderButton: 'طلب الماء',
@@ -80,7 +80,9 @@ export const ar = {
     step1: 'الكمية والنوع',
     step2: 'العنوان',
     step3: 'الملخص',
-    orderConfirmed: 'تم تأكيد الطلب!'
+    orderConfirmed: 'تم تأكيد الطلب!',
+    paymentMethod: 'طريقة الدفع',
+    cod: 'الدفع عند الاستلام'
   },
 
   // Water Types
@@ -135,6 +137,14 @@ export const ar = {
     tonnes: 'أطنان'
   },
 
+  // Edit Profile
+  editProfile: {
+    title: 'تعديل الملف الشخصي',
+    personalInfo: 'المعلومات الشخصية',
+    save: 'حفظ',
+    saved: 'تم تحديث الملف الشخصي بنجاح'
+  },
+
   // Driver
   driver: {
     greeting: 'الطلبات المتاحة',
@@ -154,7 +164,27 @@ export const ar = {
     mapDescription: 'خريطة تفاعلية مع مواقع العملاء',
     mapHint: 'المشابك الزرقاء تشير إلى الطلبات المتاحة',
     tonnes: 'برميل',
-    tonnesDelivered: 'أطنان تم توصيلها'
+    tonnesDelivered: 'أطنان تم توصيلها',
+    reportIssue: 'الإبلاغ عن مشكلة'
+  },
+
+  // Driver Report
+  driverReport: {
+    title: 'الإبلاغ عن مشكلة',
+    subtitle: 'الإبلاغ عن مشكلة مع طلب {clientName}',
+    noAnswer: 'العميل لا يرد',
+    noAnswerDesc: 'العميل لا يرد على الهاتف',
+    wrongAddress: 'عنوان خاطئ',
+    wrongAddressDesc: 'العنوان المقدم غير صحيح',
+    clientNotAvailable: 'العميل غير متاح',
+    clientNotAvailableDesc: 'العميل غير متاح في العنوان',
+    clientRefused: 'العميل رفض',
+    clientRefusedDesc: 'العميل رفض الطلب',
+    other: 'مشكلة أخرى',
+    otherDesc: 'مشكلة أخرى غير مذكورة',
+    additionalDetails: 'تفاصيل إضافية',
+    descriptionPlaceholder: 'اوصف المشكلة بالتفصيل...',
+    submit: 'إرسال التقرير'
   },
 
   // Driver Updates
@@ -238,6 +268,18 @@ export const ar = {
     donationPlace: 'تبرع الآن',
     about: 'حول',
     version: 'الإصدار 1.0.0'
+  },
+
+  // Donation Modal
+  donationModal: {
+    title: 'التبرع',
+    subtitle: 'اختر المبلغ الذي ترغب في التبرع به لدعم تطبيقنا',
+    selectAmount: 'اختر مبلغاً',
+    customAmount: 'مبلغ مخصص',
+    enterAmount: 'أدخل المبلغ',
+    donationAmount: 'مبلغ التبرع',
+    confirmDonation: 'تأكيد التبرع',
+    successMessage: 'شكراً لك على تبرعك بمبلغ {amount} درهم!'
   },
 
   // Confirm Dialog

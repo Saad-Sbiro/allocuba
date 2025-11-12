@@ -202,65 +202,72 @@
 }
 
 .progress-card {
-  padding: var(--spacing-lg);
+  padding: 0;
   position: relative;
   overflow: hidden;
+  background: transparent;
+  border: none;
+  box-shadow: none;
 }
 
-.progress-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(
-    to right,
-    transparent 0%,
-    rgba(255, 255, 255, 0.4) 50%,
-    transparent 100%
-  );
-  pointer-events: none;
-  z-index: 1;
+.progress-card::before,
+.progress-card::after {
+  display: none;
 }
 
-.dark .progress-card::before {
-  background: linear-gradient(
-    to right,
-    transparent 0%,
-    rgba(255, 255, 255, 0.1) 50%,
-    transparent 100%
-  );
+.dark .progress-card::before,
+.dark .progress-card::after {
+  display: none;
 }
 
 .progress-bar-container {
-  background: var(--glass-bg-light-weak);
-  backdrop-filter: blur(8px) saturate(180%);
-  -webkit-backdrop-filter: blur(8px) saturate(180%);
-  border-radius: var(--radius-full);
-  height: 12px;
-  overflow: hidden;
-  margin: var(--spacing-md) 0;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
-  border: 0.5px solid var(--glass-border-light-weak);
+  margin: var(--spacing-xl) 0;
+  position: relative;
+  z-index: 2;
 }
 
-.dark .progress-bar-container {
-  background: var(--glass-bg-dark-weak);
-  border-color: var(--glass-border-dark-weak);
+.progress-bar {
+  background: rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-radius: var(--radius-full);
+  height: 20px;
+  overflow: hidden;
+  box-shadow: 
+    inset 0 3px 8px rgba(0, 0, 0, 0.2),
+    inset 0 1px 3px rgba(0, 0, 0, 0.15),
+    0 2px 4px rgba(255, 255, 255, 0.6);
+  border: 1.5px solid rgba(255, 149, 0, 0.2);
+  position: relative;
+}
+
+.dark .progress-bar {
+  background: rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 149, 0, 0.3);
+  box-shadow: 
+    inset 0 3px 8px rgba(0, 0, 0, 0.4),
+    inset 0 1px 3px rgba(0, 0, 0, 0.3),
+    0 2px 4px rgba(255, 255, 255, 0.1);
 }
 
 .progress-bar-fill {
   height: 100%;
-  background: linear-gradient(90deg, var(--ios-blue) 0%, var(--ios-blue-light) 100%);
+  background: linear-gradient(90deg, 
+    rgba(255, 149, 0, 0.9) 0%, 
+    rgba(255, 179, 64, 0.95) 30%,
+    rgba(255, 149, 0, 0.9) 60%,
+    rgba(255, 179, 64, 0.95) 100%
+  );
   border-radius: var(--radius-full);
-  transition: width var(--transition-base);
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 
-    0 2px 8px rgba(10, 132, 255, 0.4),
-    0 0 12px rgba(10, 132, 255, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    0 3px 12px rgba(255, 149, 0, 0.6),
+    0 0 20px rgba(255, 149, 0, 0.5),
+    inset 0 2px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.15);
   position: relative;
   overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 .progress-bar-fill::after {
@@ -271,7 +278,7 @@
   right: 0;
   bottom: 0;
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-  animation: shimmer 2s ease-in-out infinite;
+  animation: shimmer 12s ease-in-out infinite;
 }
 
 @keyframes shimmer {
@@ -283,30 +290,166 @@
   }
 }
 
+@keyframes iconRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.progress-card {
+  background: linear-gradient(135deg, 
+    rgba(255, 149, 0, 0.12) 0%, 
+    rgba(255, 149, 0, 0.08) 50%,
+    rgba(255, 149, 0, 0.1) 100%
+  );
+  backdrop-filter: blur(50px) saturate(200%) brightness(105%);
+  -webkit-backdrop-filter: blur(50px) saturate(200%) brightness(105%);
+  border: 2px solid rgba(255, 149, 0, 0.25);
+  border-radius: var(--radius-2xl);
+  padding: var(--spacing-xl);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    0 12px 40px rgba(255, 149, 0, 0.2),
+    0 6px 20px rgba(255, 149, 0, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.4),
+    inset 0 2px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.1);
+}
+
+.progress-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 149, 0, 0.8) 25%,
+    rgba(255, 255, 255, 0.9) 50%,
+    rgba(255, 149, 0, 0.8) 75%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+  box-shadow: 0 2px 4px rgba(255, 149, 0, 0.4);
+}
+
+.progress-card::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 300%;
+  height: 300%;
+  background: radial-gradient(circle, rgba(255, 149, 0, 0.15) 0%, transparent 60%);
+  animation: progressGlow 4s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes progressGlow {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translate(20%, 20%) scale(1.1);
+    opacity: 0.6;
+  }
+}
+
+.dark .progress-card {
+  background: linear-gradient(135deg, 
+    rgba(255, 149, 0, 0.18) 0%, 
+    rgba(255, 149, 0, 0.12) 50%,
+    rgba(255, 149, 0, 0.15) 100%
+  );
+  border-color: rgba(255, 149, 0, 0.35);
+  box-shadow: 
+    0 12px 40px rgba(255, 149, 0, 0.3),
+    0 6px 20px rgba(255, 149, 0, 0.25),
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 2px 0 rgba(255, 255, 255, 0.15),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.3);
+}
+
+.dark .progress-card::before {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 149, 0, 0.6) 25%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 149, 0, 0.6) 75%,
+    transparent 100%
+  );
+  box-shadow: 0 2px 4px rgba(255, 149, 0, 0.3);
+}
+
+.dark .progress-card::after {
+  background: radial-gradient(circle, rgba(255, 149, 0, 0.12) 0%, transparent 60%);
+}
+
 .progress-header {
   display: flex;
-  align-items: flex-start;
-  gap: var(--spacing-md);
-  margin-bottom: var(--spacing-lg);
+  align-items: center;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
   position: relative;
   z-index: 2;
+  padding-bottom: var(--spacing-lg);
+  border-bottom: 1px solid rgba(255, 149, 0, 0.2);
 }
 
 .progress-icon {
-  width: 56px;
-  height: 56px;
-  background: linear-gradient(135deg, var(--ios-orange) 0%, #FFB340 100%);
-  border-radius: var(--radius-lg);
+  width: 72px;
+  height: 72px;
+  background: linear-gradient(135deg, 
+    rgba(255, 149, 0, 0.95) 0%, 
+    rgba(255, 179, 64, 0.9) 50%, 
+    rgba(255, 149, 0, 0.95) 100%
+  );
+  border-radius: var(--radius-xl);
   display: flex;
   align-items: center;
   justify-content: center;
   color: #FFFFFF;
   flex-shrink: 0;
   box-shadow: 
-    0 4px 16px rgba(255, 149, 0, 0.4),
-    0 2px 8px rgba(255, 149, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+    0 10px 30px rgba(255, 149, 0, 0.6),
+    0 5px 15px rgba(255, 149, 0, 0.5),
+    0 0 0 3px rgba(255, 255, 255, 0.4),
+    inset 0 2px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-icon::before {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 300%;
+  height: 300%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 0%, transparent 70%);
+  animation: iconShine 3s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes iconShine {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }
 
 .progress-info {
@@ -315,41 +458,82 @@
 }
 
 .progress-title {
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 700;
   letter-spacing: -0.5px;
   color: var(--text-primary);
-  margin: 0 0 var(--spacing-xs) 0;
+  margin: 0 0 var(--spacing-sm) 0;
   line-height: 1.3;
+  font-family: 'Faculty Glyphic', 'Merienda', 'Inter', sans-serif, -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+[dir="rtl"] .progress-title,
+[lang="ar"] .progress-title {
+  font-family: 'Noto Sans Arabic', 'Merienda', sans-serif;
 }
 
 .progress-subtitle {
-  font-size: 15px;
-  color: var(--text-tertiary);
+  font-size: 16px;
+  color: var(--text-secondary);
   letter-spacing: -0.24px;
-  line-height: 1.47;
+  line-height: 1.5;
   margin: 0;
-  font-weight: 400;
+  font-weight: 500;
+  font-family: 'Faculty Glyphic', 'Merienda', 'Inter', sans-serif, -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial;
+}
+
+[dir="rtl"] .progress-subtitle,
+[lang="ar"] .progress-subtitle {
+  font-family: 'Noto Sans Arabic', 'Merienda', sans-serif;
 }
 
 .progress-percentage {
   text-align: center;
-  font-size: 13px;
-  color: var(--text-tertiary);
+  font-size: 17px;
+  color: var(--ios-orange);
   letter-spacing: -0.08px;
-  font-weight: 500;
-  margin-top: var(--spacing-sm);
+  font-weight: 700;
+  margin-top: var(--spacing-md);
   position: relative;
   z-index: 2;
+  font-family: 'Faculty Glyphic', 'Merienda', 'Inter', sans-serif, -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial;
+  text-shadow: 
+    0 2px 4px rgba(255, 149, 0, 0.3),
+    0 1px 2px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, var(--ios-orange) 0%, #FFB340 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+[dir="rtl"] .progress-percentage,
+[lang="ar"] .progress-percentage {
+  font-family: 'Noto Sans Arabic', 'Merienda', sans-serif;
 }
 
 .progress-stats {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: var(--spacing-lg);
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-xl);
+  border-top: 2px solid rgba(255, 149, 0, 0.2);
   position: relative;
   z-index: 2;
+  background: rgba(255, 149, 0, 0.05);
+  backdrop-filter: blur(8px) saturate(150%);
+  -webkit-backdrop-filter: blur(8px) saturate(150%);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  margin-left: calc(var(--spacing-xl) * -1);
+  margin-right: calc(var(--spacing-xl) * -1);
+  margin-bottom: calc(var(--spacing-xl) * -1);
+}
+
+.dark .progress-stats {
+  border-top-color: rgba(255, 149, 0, 0.3);
+  background: rgba(255, 149, 0, 0.08);
 }
 
 .progress-stat {
@@ -362,22 +546,55 @@
 }
 
 .progress-stat-divider {
-  width: 1px;
-  height: 40px;
-  background: var(--glass-border-light-weak);
-  margin: 0 var(--spacing-sm);
+  width: 2px;
+  height: 50px;
+  background: linear-gradient(180deg, 
+    transparent 0%,
+    rgba(255, 149, 0, 0.3) 20%,
+    rgba(255, 149, 0, 0.5) 50%,
+    rgba(255, 149, 0, 0.3) 80%,
+    transparent 100%
+  );
+  margin: 0 var(--spacing-md);
+  border-radius: var(--radius-full);
+  box-shadow: 0 0 8px rgba(255, 149, 0, 0.3);
 }
 
 .dark .progress-stat-divider {
-  background: var(--glass-border-dark-weak);
+  background: linear-gradient(180deg, 
+    transparent 0%,
+    rgba(255, 149, 0, 0.4) 20%,
+    rgba(255, 149, 0, 0.6) 50%,
+    rgba(255, 149, 0, 0.4) 80%,
+    transparent 100%
+  );
+  box-shadow: 0 0 10px rgba(255, 149, 0, 0.4);
 }
 
 .stat-number {
-  font-size: 24px;
+  font-size: 32px;
   font-weight: 700;
   letter-spacing: -0.5px;
-  color: var(--ios-blue);
   line-height: 1.2;
+  font-family: 'Faculty Glyphic', 'Merienda', 'Inter', sans-serif, -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial;
+  background: linear-gradient(135deg, var(--ios-orange) 0%, #FFB340 50%, var(--ios-orange) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 2px 4px rgba(255, 149, 0, 0.2);
+  filter: drop-shadow(0 1px 2px rgba(255, 149, 0, 0.3));
+}
+
+[dir="rtl"] .stat-number,
+[lang="ar"] .stat-number {
+  font-family: 'Noto Sans Arabic', 'Merienda', sans-serif;
+}
+
+.dark .stat-number {
+  background: linear-gradient(135deg, #FFB340 0%, var(--ios-orange) 50%, #FFB340 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .stat-label {

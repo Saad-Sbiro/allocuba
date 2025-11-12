@@ -1,0 +1,369 @@
+/* ===== iOS 26 Liquid Glass - Driver Report Modal ===== */
+
+.report-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-lg);
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.report-modal {
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  background: var(--glass-bg-overlay);
+  backdrop-filter: blur(var(--blur-xl)) saturate(200%);
+  -webkit-backdrop-filter: blur(var(--blur-xl)) saturate(200%);
+  border: 1px solid var(--glass-border-light);
+  border-radius: var(--radius-xl);
+  box-shadow: 
+    var(--glass-shadow),
+    var(--glass-shadow-inner),
+    0 20px 60px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  position: relative;
+  animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.dark .report-modal {
+  background: var(--glass-bg-overlay);
+  border-color: var(--glass-border-dark);
+}
+
+.report-modal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.report-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-lg);
+  border-bottom: 1px solid var(--glass-border-light);
+  position: relative;
+  z-index: 2;
+}
+
+.report-modal-title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.report-icon {
+  color: var(--ios-orange, #FF9500);
+}
+
+.report-modal-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-family: 'Faculty Glyphic', 'Merienda', 'Inter', sans-serif, -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial;
+  letter-spacing: -0.41px;
+}
+
+[dir="rtl"] .report-modal-title,
+[lang="ar"] .report-modal-title {
+  font-family: 'Noto Sans Arabic', 'Merienda', sans-serif;
+}
+
+.report-modal-close {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  background: var(--glass-bg-overlay);
+  backdrop-filter: blur(var(--blur-sm)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--blur-sm)) saturate(180%);
+  border: 1px solid var(--glass-border-light);
+  color: var(--text-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-base);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.report-modal-close:active {
+  transform: scale(0.95);
+}
+
+.dark .report-modal-close {
+  border-color: var(--glass-border-dark);
+}
+
+.report-modal-content {
+  padding: var(--spacing-lg);
+  overflow-y: auto;
+  flex: 1;
+  max-height: calc(90vh - 200px);
+  -webkit-overflow-scrolling: touch;
+}
+
+.report-modal-content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.report-modal-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.report-modal-content::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+}
+
+.dark .report-modal-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.report-modal-subtitle {
+  font-size: 15px;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-lg);
+  line-height: 1.5;
+  font-family: 'Faculty Glyphic', 'Merienda', 'Inter', sans-serif, -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial;
+}
+
+[dir="rtl"] .report-modal-subtitle,
+[lang="ar"] .report-modal-subtitle {
+  font-family: 'Noto Sans Arabic', 'Merienda', sans-serif;
+}
+
+.report-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.report-issues {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.report-issue-card {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background: var(--glass-bg-overlay);
+  backdrop-filter: blur(var(--blur-md)) saturate(200%);
+  -webkit-backdrop-filter: blur(var(--blur-md)) saturate(200%);
+  border: 1px solid var(--glass-border-light);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  text-align: left;
+  -webkit-tap-highlight-color: transparent;
+  box-shadow: var(--glass-shadow-sm), var(--glass-shadow-inner);
+}
+
+.report-issue-card:active {
+  transform: scale(0.98);
+}
+
+.report-issue-card.active {
+  border-color: var(--ios-orange, #FF9500);
+  background: rgba(255, 149, 0, 0.1);
+  box-shadow: 
+    var(--glass-shadow-sm), 
+    var(--glass-shadow-inner),
+    0 0 0 2px rgba(255, 149, 0, 0.2);
+}
+
+.dark .report-issue-card {
+  border-color: var(--glass-border-dark);
+}
+
+.dark .report-issue-card.active {
+  background: rgba(255, 149, 0, 0.15);
+  border-color: var(--ios-orange, #FF9500);
+}
+
+.report-issue-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 149, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ios-orange, #FF9500);
+  flex-shrink: 0;
+}
+
+.report-issue-card.active .report-issue-icon {
+  background: rgba(255, 149, 0, 0.2);
+}
+
+.report-issue-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.report-issue-label {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.41px;
+  font-family: 'Faculty Glyphic', 'Merienda', 'Inter', sans-serif, -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial;
+}
+
+[dir="rtl"] .report-issue-label,
+[lang="ar"] .report-issue-label {
+  font-family: 'Noto Sans Arabic', 'Merienda', sans-serif;
+}
+
+.report-issue-desc {
+  font-size: 13px;
+  color: var(--text-tertiary);
+  letter-spacing: -0.08px;
+  font-family: 'Faculty Glyphic', 'Merienda', 'Inter', sans-serif, -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial;
+}
+
+[dir="rtl"] .report-issue-desc,
+[lang="ar"] .report-issue-desc {
+  font-family: 'Noto Sans Arabic', 'Merienda', sans-serif;
+}
+
+.report-description-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.report-description-label {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-primary);
+  font-family: 'Faculty Glyphic', 'Merienda', 'Inter', sans-serif, -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial;
+}
+
+[dir="rtl"] .report-description-label,
+[lang="ar"] .report-description-label {
+  font-family: 'Noto Sans Arabic', 'Merienda', sans-serif;
+}
+
+.report-description-input {
+  width: 100%;
+  padding: var(--spacing-md);
+  background: var(--glass-bg-overlay);
+  backdrop-filter: blur(var(--blur-md)) saturate(200%);
+  -webkit-backdrop-filter: blur(var(--blur-md)) saturate(200%);
+  border: 1px solid var(--glass-border-light);
+  border-radius: var(--radius-md);
+  font-size: 15px;
+  color: var(--text-primary);
+  font-family: 'Faculty Glyphic', 'Merienda', 'Inter', sans-serif, -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial;
+  resize: vertical;
+  min-height: 100px;
+  transition: all var(--transition-base);
+  box-shadow: var(--glass-shadow-sm), var(--glass-shadow-inner);
+}
+
+.report-description-input:focus {
+  outline: none;
+  border-color: var(--ios-orange, #FF9500);
+  box-shadow: 
+    var(--glass-shadow-sm), 
+    var(--glass-shadow-inner),
+    0 0 0 2px rgba(255, 149, 0, 0.1);
+}
+
+.report-description-input::placeholder {
+  color: var(--text-tertiary);
+  opacity: 0.6;
+}
+
+.dark .report-description-input {
+  border-color: var(--glass-border-dark);
+}
+
+.dark .report-description-input:focus {
+  border-color: var(--ios-orange, #FF9500);
+}
+
+[dir="rtl"] .report-description-input,
+[lang="ar"] .report-description-input {
+  font-family: 'Noto Sans Arabic', 'Merienda', sans-serif;
+  text-align: right;
+}
+
+.report-modal-actions {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+.report-cancel-btn,
+.report-submit-btn {
+  flex: 1;
+}
+
+.report-submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .report-modal {
+    max-width: 100%;
+    margin: var(--spacing-md);
+    max-height: 95vh;
+  }
+
+  .report-modal-header {
+    padding: var(--spacing-md);
+  }
+
+  .report-modal-content {
+    padding: var(--spacing-md);
+  }
+}
+

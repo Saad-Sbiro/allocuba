@@ -12,6 +12,7 @@ import ProfilePage from './screens/ProfilePage'
 import DriverProfile from './screens/DriverProfile'
 import DriverUpdatesPage from './screens/DriverUpdatesPage'
 import SettingsPage from './screens/SettingsPage'
+import EditProfilePage from './screens/EditProfilePage'
 import BottomNavigation from './components/BottomNavigation'
 
 // Scroll to Top Component
@@ -64,11 +65,12 @@ const NavigationController = ({ userRole }) => {
   const navigate = useNavigate()
   const [activeTab, setActiveTab] = useState('home')
   
-  // Don't show navigation on splash/signup/settings pages
+  // Don't show navigation on splash/signup/settings/edit-profile pages
   const shouldShowNav = location.pathname !== '/' && 
     location.pathname !== '/signup' && 
     !location.pathname.includes('/signup/') &&
-    !location.pathname.includes('/settings')
+    !location.pathname.includes('/settings') &&
+    !location.pathname.includes('/edit-profile')
   
   // Update active tab based on current route
   useEffect(() => {
@@ -125,10 +127,12 @@ function App() {
           <Route path="/client/order" element={<OrderPage />} />
           <Route path="/client/updates" element={<UpdatesPage />} />
           <Route path="/client/profile" element={<ProfilePage user={user} />} />
+          <Route path="/client/edit-profile" element={<EditProfilePage userRole="client" setUser={setUser} user={user} />} />
           <Route path="/client/settings" element={<SettingsPage userRole="client" />} />
           <Route path="/driver/home" element={<DriverPage />} />
           <Route path="/driver/updates" element={<DriverUpdatesPage />} />
           <Route path="/driver/profile" element={<DriverProfile />} />
+          <Route path="/driver/edit-profile" element={<EditProfilePage userRole="driver" />} />
           <Route path="/driver/settings" element={<SettingsPage userRole="driver" />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

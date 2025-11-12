@@ -720,6 +720,31 @@
   color: var(--ios-green);
 }
 
+.payment-method {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--spacing-md);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--glass-border-light-weak);
+}
+
+.payment-label {
+  font-size: 15px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.payment-value {
+  font-size: 15px;
+  color: var(--ios-blue, #0A84FF);
+  font-weight: 600;
+}
+
+.dark .payment-method {
+  border-top-color: var(--glass-border-dark-weak);
+}
+
 .confirm-btn {
   padding: 16px var(--spacing-lg);
   font-size: 17px;

@@ -217,6 +217,10 @@ const OrderPage = () => {
                 <CheckCircle size={16} />
                 <span>{t('order.estimatedDelivery')}: {deliveryTime}</span>
               </div>
+              <div className="payment-method">
+                <span className="payment-label">{t('order.paymentMethod')}:</span>
+                <span className="payment-value">{t('order.cod')}</span>
+              </div>
             </div>
 
             <button 

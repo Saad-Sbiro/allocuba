@@ -43,7 +43,7 @@ export const fr = {
   clientHome: {
     greeting: 'Bonjour, {name}',
     greetingDefault: 'Bonjour',
-    subtitle: 'Commandez de l\'eau en silence',
+    subtitle: 'Livraison d\'eau à votre porte',
     needWater: 'Besoin d\'eau ?',
     orderNow: 'Commandez maintenant et recevez votre livraison rapidement',
     orderButton: 'Commander de l\'eau',
@@ -80,7 +80,9 @@ export const fr = {
     step1: 'Quantité & Type',
     step2: 'Adresse',
     step3: 'Résumé',
-    orderConfirmed: 'Commande confirmée!'
+    orderConfirmed: 'Commande confirmée!',
+    paymentMethod: 'Méthode de paiement',
+    cod: 'Paiement à la livraison (COD)'
   },
 
   // Water Types
@@ -135,6 +137,14 @@ export const fr = {
     tonnes: 'tonnes'
   },
 
+  // Edit Profile
+  editProfile: {
+    title: 'Modifier le profil',
+    personalInfo: 'Informations personnelles',
+    save: 'Enregistrer',
+    saved: 'Profil mis à jour avec succès'
+  },
+
   // Driver
   driver: {
     greeting: 'Commandes disponibles',
@@ -154,7 +164,27 @@ export const fr = {
     mapDescription: 'Carte interactive avec les positions des clients',
     mapHint: 'Les épingles bleues indiquent les commandes disponibles',
     tonnes: 'برميل',
-    tonnesDelivered: 'tonnes livrées'
+    tonnesDelivered: 'tonnes livrées',
+    reportIssue: 'Signaler un problème'
+  },
+
+  // Driver Report
+  driverReport: {
+    title: 'Signaler un problème',
+    subtitle: 'Signaler un problème avec la commande de {clientName}',
+    noAnswer: 'Client ne répond pas',
+    noAnswerDesc: 'Le client ne répond pas au téléphone',
+    wrongAddress: 'Adresse incorrecte',
+    wrongAddressDesc: 'L\'adresse fournie est incorrecte',
+    clientNotAvailable: 'Client non disponible',
+    clientNotAvailableDesc: 'Le client n\'est pas disponible à l\'adresse',
+    clientRefused: 'Client a refusé',
+    clientRefusedDesc: 'Le client a refusé la commande',
+    other: 'Autre problème',
+    otherDesc: 'Autre problème non listé',
+    additionalDetails: 'Détails supplémentaires',
+    descriptionPlaceholder: 'Décrivez le problème en détail...',
+    submit: 'Envoyer le rapport'
   },
 
   // Driver Updates
@@ -238,6 +268,18 @@ export const fr = {
     donationPlace: 'Faire un don',
     about: 'À propos',
     version: 'Version 1.0.0'
+  },
+
+  // Donation Modal
+  donationModal: {
+    title: 'Faire un don',
+    subtitle: 'Choisissez le montant que vous souhaitez donner pour soutenir notre application',
+    selectAmount: 'Sélectionnez un montant',
+    customAmount: 'Montant personnalisé',
+    enterAmount: 'Entrez le montant',
+    donationAmount: 'Montant du don',
+    confirmDonation: 'Confirmer le don',
+    successMessage: 'Merci pour votre don de {amount} MAD!'
   },
 
   // Confirm Dialog

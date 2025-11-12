@@ -65,7 +65,18 @@ const ProfilePage = ({ user }) => {
         </div>
         <h1 className="profile-name">{t('profile.name', { firstName: user?.firstName || 'Saad', lastName: user?.lastName || 'A.' })}</h1>
         <p className="profile-role">{t('profile.role')}</p>
-        <button className="edit-profile-btn">
+        <button 
+          className="edit-profile-btn"
+          onClick={() => navigate('/client/edit-profile', { 
+            state: { 
+              userData: {
+                firstName: user?.firstName || '',
+                lastName: user?.lastName || '',
+                phone: user?.phone || ''
+              }
+            } 
+          })}
+        >
           <Edit size={16} />
           {t('profile.editProfile')}
         </button>

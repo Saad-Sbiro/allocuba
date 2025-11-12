@@ -67,7 +67,18 @@ const DriverProfile = () => {
         </div>
         <h1 className="driver-profile-name">{t('driverProfile.name')}</h1>
         <p className="driver-profile-role">{t('driverProfile.role')}</p>
-        <button className="edit-profile-btn">
+        <button 
+          className="edit-profile-btn"
+          onClick={() => navigate('/driver/edit-profile', { 
+            state: { 
+              userData: {
+                firstName: '',
+                lastName: '',
+                phone: ''
+              }
+            } 
+          })}
+        >
           <Edit size={16} />
           {t('driverProfile.editProfile')}
         </button>

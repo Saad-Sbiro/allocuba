@@ -92,7 +92,7 @@ const DriverUpdatesPage = () => {
                 <div className="notification-content">
                   <div className="notification-header">
                     <h4 className="notification-title">{notification.title}</h4>
-                    {!notification.read && <span className="unread-dot"></span>}
+                    {!notification.read && !notification.urgent && <span className="unread-dot"></span>}
                     {notification.urgent && <span className="urgent-badge">{t('driverUpdates.urgent')}</span>}
                   </div>
                   <p className="notification-message">{notification.message}</p>

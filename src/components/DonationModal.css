@@ -1,0 +1,375 @@
+/* ===== iOS 26 Liquid Glass - Donation Modal ===== */
+
+.donation-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-lg);
+  animation: fadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.donation-modal {
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(60px) saturate(200%) brightness(105%);
+  -webkit-backdrop-filter: blur(60px) saturate(200%) brightness(105%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: var(--radius-2xl);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.3),
+    0 8px 24px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  position: relative;
+  animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.dark .donation-modal {
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(60px) saturate(200%) brightness(95%);
+  -webkit-backdrop-filter: blur(60px) saturate(200%) brightness(95%);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    0 8px 24px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+}
+
+.donation-modal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 45, 85, 0.8) 20%,
+    rgba(255, 255, 255, 0.9) 50%,
+    rgba(255, 45, 85, 0.8) 80%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+  box-shadow: 0 1px 2px rgba(255, 45, 85, 0.3);
+}
+
+.donation-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-lg);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  position: relative;
+  z-index: 2;
+}
+
+.dark .donation-modal-header {
+  border-bottom-color: rgba(255, 255, 255, 0.05);
+}
+
+.donation-modal-title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.donation-icon {
+  color: #FF2D55;
+}
+
+.donation-modal-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-family: 'Faculty Glyphic', 'Merienda', 'Inter', sans-serif, -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial;
+  letter-spacing: -0.41px;
+}
+
+[dir="rtl"] .donation-modal-title,
+[lang="ar"] .donation-modal-title {
+  font-family: 'Noto Sans Arabic', 'Merienda', sans-serif;
+}
+
+.donation-modal-close {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: var(--text-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-base);
+  -webkit-tap-highlight-color: transparent;
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  z-index: 10;
+}
+
+.donation-modal-close:active {
+  background: rgba(255, 255, 255, 0.8);
+  transform: scale(0.95) rotate(90deg);
+}
+
+.dark .donation-modal-close {
+  background: rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.donation-modal-content {
+  padding: var(--spacing-lg);
+  overflow-y: auto;
+  flex: 1;
+  max-height: calc(90vh - 200px);
+  -webkit-overflow-scrolling: touch;
+}
+
+.donation-modal-subtitle {
+  font-size: 15px;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-xl);
+  line-height: 1.5;
+  font-family: 'Faculty Glyphic', 'Merienda', 'Inter', sans-serif, -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial;
+}
+
+[dir="rtl"] .donation-modal-subtitle,
+[lang="ar"] .donation-modal-subtitle {
+  font-family: 'Noto Sans Arabic', 'Merienda', sans-serif;
+}
+
+.donation-amount-section {
+  margin-bottom: var(--spacing-xl);
+}
+
+.donation-amount-label {
+  display: block;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-md);
+  font-family: 'Faculty Glyphic', 'Merienda', 'Inter', sans-serif, -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial;
+}
+
+[dir="rtl"] .donation-amount-label,
+[lang="ar"] .donation-amount-label {
+  font-family: 'Noto Sans Arabic', 'Merienda', sans-serif;
+}
+
+.preset-amounts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+}
+
+.preset-amount-btn {
+  padding: var(--spacing-md);
+  background: var(--glass-bg-overlay);
+  backdrop-filter: blur(var(--blur-md)) saturate(200%);
+  -webkit-backdrop-filter: blur(var(--blur-md)) saturate(200%);
+  border: 1px solid var(--glass-border-light);
+  border-radius: var(--radius-md);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  -webkit-tap-highlight-color: transparent;
+  box-shadow: var(--glass-shadow-sm), var(--glass-shadow-inner);
+  font-family: 'Faculty Glyphic', 'Merienda', 'Inter', sans-serif, -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial;
+}
+
+.preset-amount-btn:active {
+  transform: scale(0.98);
+}
+
+.preset-amount-btn.active {
+  background: linear-gradient(135deg, rgba(255, 45, 85, 0.2) 0%, rgba(255, 45, 85, 0.15) 100%);
+  border-color: #FF2D55;
+  color: #FF2D55;
+  box-shadow: 
+    var(--glass-shadow-sm), 
+    var(--glass-shadow-inner),
+    0 0 0 2px rgba(255, 45, 85, 0.2);
+}
+
+.dark .preset-amount-btn {
+  border-color: var(--glass-border-dark);
+}
+
+.dark .preset-amount-btn.active {
+  background: linear-gradient(135deg, rgba(255, 45, 85, 0.25) 0%, rgba(255, 45, 85, 0.2) 100%);
+  border-color: #FF2D55;
+}
+
+.custom-amount-group {
+  margin-top: var(--spacing-lg);
+}
+
+.custom-amount-label {
+  display: block;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-sm);
+  font-family: 'Faculty Glyphic', 'Merienda', 'Inter', sans-serif, -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial;
+}
+
+[dir="rtl"] .custom-amount-label,
+[lang="ar"] .custom-amount-label {
+  font-family: 'Noto Sans Arabic', 'Merienda', sans-serif;
+}
+
+.custom-amount-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  background: var(--glass-bg-overlay);
+  backdrop-filter: blur(var(--blur-md)) saturate(200%);
+  -webkit-backdrop-filter: blur(var(--blur-md)) saturate(200%);
+  border: 1px solid var(--glass-border-light);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  box-shadow: var(--glass-shadow-sm), var(--glass-shadow-inner);
+}
+
+.custom-amount-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-primary);
+  outline: none;
+  font-family: 'Faculty Glyphic', 'Merienda', 'Inter', sans-serif, -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial;
+}
+
+.custom-amount-input::placeholder {
+  color: var(--text-tertiary);
+  opacity: 0.6;
+}
+
+.currency-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-family: 'Faculty Glyphic', 'Merienda', 'Inter', sans-serif, -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial;
+}
+
+.dark .custom-amount-input-wrapper {
+  border-color: var(--glass-border-dark);
+}
+
+.donation-summary {
+  background: rgba(255, 45, 85, 0.08);
+  backdrop-filter: blur(8px) saturate(180%);
+  -webkit-backdrop-filter: blur(8px) saturate(180%);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+  border: 1px solid rgba(255, 45, 85, 0.2);
+}
+
+.dark .donation-summary {
+  background: rgba(255, 45, 85, 0.12);
+  border-color: rgba(255, 45, 85, 0.3);
+}
+
+.donation-summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.donation-summary-label {
+  font-size: 15px;
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-family: 'Faculty Glyphic', 'Merienda', 'Inter', sans-serif, -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial;
+}
+
+.donation-summary-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: #FF2D55;
+  font-family: 'Faculty Glyphic', 'Merienda', 'Inter', sans-serif, -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial;
+}
+
+[dir="rtl"] .donation-summary-label,
+[dir="rtl"] .donation-summary-value,
+[lang="ar"] .donation-summary-label,
+[lang="ar"] .donation-summary-value {
+  font-family: 'Noto Sans Arabic', 'Merienda', sans-serif;
+}
+
+.donation-modal-actions {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+.donation-cancel-btn,
+.donation-confirm-btn {
+  flex: 1;
+}
+
+.donation-confirm-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .donation-modal {
+    max-width: 100%;
+    margin: var(--spacing-md);
+    max-height: 95vh;
+  }
+
+  .preset-amounts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+

@@ -6,6 +6,7 @@ import { useTheme } from '../context/ThemeContext'
 import { useThemeColor } from '../context/ThemeColorContext'
 import LanguageSelector from '../components/LanguageSelector'
 import ThemeToggle from '../components/ThemeToggle'
+import DonationModal from '../components/DonationModal'
 import './SettingsPage.css'
 
 const SettingsPage = ({ userRole }) => {
@@ -14,6 +15,7 @@ const SettingsPage = ({ userRole }) => {
   const { isDark } = useTheme()
   const { themeColor, setThemeColor } = useThemeColor()
   const [showColorPicker, setShowColorPicker] = useState(false)
+  const [showDonationModal, setShowDonationModal] = useState(false)
 
   const presetColors = [
     { name: 'Bleu iOS', value: '#0A84FF' },
@@ -31,8 +33,14 @@ const SettingsPage = ({ userRole }) => {
   }
 
   const handleDonation = () => {
-    // You can add donation link or action here
-    alert(t('settings.donationPlace'))
+    setShowDonationModal(true)
+  }
+
+  const handleDonationConfirm = (amount) => {
+    // In a real app, this would process the donation
+    console.log('Donation amount:', amount, 'MAD')
+    // You can add payment processing here
+    alert(t('donationModal.successMessage', { amount }))
   }
 
   return (
@@ -181,6 +189,12 @@ const SettingsPage = ({ userRole }) => {
           </div>
         </div>
       </div>
+
+      <DonationModal
+        isOpen={showDonationModal}
+        onClose={() => setShowDonationModal(false)}
+        onConfirm={handleDonationConfirm}
+      />
     </div>
   )
 }

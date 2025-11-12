@@ -314,6 +314,12 @@ h1, h2, h3, h4, h5, h6 {
   min-height: 44px;
   backdrop-filter: blur(var(--blur-md)) saturate(180%);
   -webkit-backdrop-filter: blur(var(--blur-md)) saturate(180%);
+  white-space: nowrap;
+}
+
+.btn span {
+  white-space: nowrap;
+  display: inline-block;
 }
 
 [dir="rtl"] .btn,
@@ -1032,6 +1038,27 @@ h1, h2, h3, h4, h5, h6 {
   .btn {
     backdrop-filter: blur(16px) saturate(160%) !important;
     -webkit-backdrop-filter: blur(16px) saturate(160%) !important;
+    padding: 12px 16px;
+    font-size: 15px;
+    min-height: 44px;
+    white-space: nowrap;
+  }
+
+  .btn span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    font-size: 15px;
+    padding: 12px 16px;
+  }
+
+  .btn-full {
+    width: 100%;
+    padding: 12px 20px;
   }
 
   .input-field {
