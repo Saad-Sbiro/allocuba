@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import { Bell, CheckCircle, Package, ArrowRight, Navigation } from 'lucide-react'
 import { useLanguage } from '../context/LanguageContext'
 import NotificationCard from '../components/NotificationCard'
+import LottieAnimation from '../components/LottieAnimation'
+import { LOTTIE_ANIMATIONS } from '../config/lottieAnimations'
 import './UpdatesPage.css'
 
 const UpdatesPage = () => {

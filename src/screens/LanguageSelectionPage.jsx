@@ -3,6 +3,8 @@ import { useNavigate, useLocation } from 'react-router-dom'
 import { Globe, Check, ArrowRight } from 'lucide-react'
 import { useLanguage } from '../context/LanguageContext'
 import logo from '../logoll.png'
+import LottieAnimation from '../components/LottieAnimation'
+import { LOTTIE_ANIMATIONS } from '../config/lottieAnimations'
 import './LanguageSelectionPage.css'
 
 const LanguageSelectionPage = ({ setUser, setUserRole }) => {
@@ -47,7 +49,15 @@ const LanguageSelectionPage = ({ setUser, setUserRole }) => {
       </div>
       <div className="language-selection-content">
         <div className="language-selection-header">
-          <Globe size={32} className="language-icon" />
+          <div className="language-animation">
+            <LottieAnimation
+              src={LOTTIE_ANIMATIONS.app}
+              className="language-lottie"
+              style={{ width: '120px', height: '120px' }}
+              loop={true}
+              autoplay={true}
+            />
+          </div>
           <h2 className="language-selection-title">
             {t('signup.selectLanguage')}
           </h2>

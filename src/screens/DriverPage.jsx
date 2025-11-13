@@ -5,6 +5,8 @@ import { useLanguage } from '../context/LanguageContext'
 import logo from '../logoll.png'
 import NotificationCard from '../components/NotificationCard'
 import DriverReportModal from '../components/DriverReportModal'
+import LottieAnimation from '../components/LottieAnimation'
+import { LOTTIE_ANIMATIONS } from '../config/lottieAnimations'
 import './DriverPage.css'
 
 const DriverPage = () => {
@@ -129,6 +131,20 @@ const DriverPage = () => {
       </div>
 
       <div className="scrollable-content">
+        <div className="main-action-card">
+          <div className="action-icon">
+            <div className="home-animation">
+              <LottieAnimation
+                src={LOTTIE_ANIMATIONS.app}
+                className="home-lottie"
+                style={{ width: '100px', height: '100px' }}
+                loop={true}
+                autoplay={true}
+                speed={0.3}
+              />
+            </div>
+          </div>
+        </div>
         {activeDeliveries.length > 0 && (
           <div className="section">
             <h3 className="section-title active-deliveries">
@@ -156,16 +172,16 @@ const DriverPage = () => {
                     <AlertTriangle size={18} />
                     <span>{t('driver.reportIssue')}</span>
                   </button>
-                  <button
+                <button
                     className="btn btn-primary delivery-btn"
-                    onClick={() => handleMarkDelivered(order.id)}
-                    onTouchStart={handleTouchStart}
-                    onTouchEnd={handleTouchEnd}
-                  >
-                    <CheckCircle size={20} />
-                    <span>{t('driver.markDelivered')}</span>
-                    <img src={logo} alt="Allocuba" className="btn-logo-moving" />
-                  </button>
+                  onClick={() => handleMarkDelivered(order.id)}
+                  onTouchStart={handleTouchStart}
+                  onTouchEnd={handleTouchEnd}
+                >
+                  <CheckCircle size={20} />
+                  <span>{t('driver.markDelivered')}</span>
+                  <img src={logo} alt="Allocuba" className="btn-logo-moving" />
+                </button>
                 </div>
               </div>
             ))}

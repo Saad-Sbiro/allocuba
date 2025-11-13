@@ -113,28 +113,87 @@
 
 .nav-item:hover {
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
-  transform: translateY(-1px) translateZ(0);
+  transform: translateX(0) translateZ(0);
   transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
               box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ===== Nav Item Active Press ===== */
 .nav-item:active {
-  transform: translateY(0) scale(0.96) translateZ(0);
+  transform: translateX(0) scale(0.96) translateZ(0);
   transition: transform 0.1s cubic-bezier(0.2, 0, 0.2, 1);
 }
 
 .nav-item.active {
   box-shadow: 0px 4px 16px rgba(10, 132, 255, 0.3);
   color: var(--ios-blue, #0A84FF);
-  transform: translateY(-2px) translateZ(0);
+  transform: translateX(0) translateZ(0);
   flex-grow: 1;
   min-width: 0;
   opacity: 1;
-  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-              box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+  animation: navBounceHorizontal 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  transition: box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1),
               color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
               flex-grow 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes navBounceHorizontal {
+  0% {
+    transform: translateX(0) translateZ(0);
+    opacity: 0.9;
+  }
+  10% {
+    transform: translateX(-0.3%) translateZ(0);
+    opacity: 0.95;
+  }
+  20% {
+    transform: translateX(-0.6%) translateZ(0);
+    opacity: 0.98;
+  }
+  30% {
+    transform: translateX(-0.8%) translateZ(0);
+    opacity: 1;
+  }
+  40% {
+    transform: translateX(-0.95%) translateZ(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(-1%) translateZ(0);
+    opacity: 1;
+  }
+  60% {
+    transform: translateX(-0.3%) translateZ(0);
+    opacity: 1;
+  }
+  70% {
+    transform: translateX(0.5%) translateZ(0);
+    opacity: 1;
+  }
+  75% {
+    transform: translateX(0.2%) translateZ(0);
+    opacity: 1;
+  }
+  80% {
+    transform: translateX(-0.05%) translateZ(0);
+    opacity: 1;
+  }
+  85% {
+    transform: translateX(-0.2%) translateZ(0);
+    opacity: 1;
+  }
+  90% {
+    transform: translateX(-0.1%) translateZ(0);
+    opacity: 1;
+  }
+  95% {
+    transform: translateX(0.05%) translateZ(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0) translateZ(0);
+    opacity: 1;
+  }
 }
 
 .nav-item.active::before {
@@ -163,15 +222,16 @@
 
 .dark .nav-item:hover {
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
-  transform: translateY(-1px) translateZ(0);
+  transform: translateX(0) translateZ(0);
 }
 
 .dark .nav-item.active {
   box-shadow: 0px 4px 16px rgba(10, 132, 255, 0.4);
   color: var(--ios-blue-light, #64D2FF);
-  transform: translateY(-2px) translateZ(0);
+  transform: translateX(0) translateZ(0);
   flex-grow: 1;
   min-width: 0;
+  animation: navBounceHorizontal 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 .dark .nav-item.active::before {

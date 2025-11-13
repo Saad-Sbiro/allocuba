@@ -18,10 +18,19 @@
   justify-content: space-between;
   align-items: flex-start;
   gap: var(--spacing-md);
+  position: relative;
 }
 
 .home-header > div:first-child {
   flex: 1;
+}
+
+.home-header-logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+  flex-shrink: 0;
 }
 
 .greeting {
@@ -100,6 +109,16 @@
   margin-bottom: var(--spacing-md);
   position: relative;
   z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.home-animation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .action-logo {
@@ -168,9 +187,9 @@
     height: 100px;
   }
 
-  .action-logo {
-    width: 60px;
-    height: 60px;
+  .home-header-logo {
+    width: 72px;
+    height: 72px;
   }
 
   .action-title {
@@ -233,9 +252,9 @@
     height: 120px;
   }
 
-  .action-logo {
-    width: 72px;
-    height: 72px;
+  .home-header-logo {
+    width: 80px;
+    height: 80px;
   }
 
   .action-title {

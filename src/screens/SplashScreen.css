@@ -79,6 +79,15 @@
   animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.splash-animation {
+  margin-bottom: var(--spacing-lg);
+  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
+}
+
+.splash-lottie {
+  filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.3));
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -129,6 +138,11 @@
   flex-direction: column;
   align-items: center;
   gap: var(--spacing-md);
+}
+
+.splash-loader-animation {
+  filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.3));
+  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.3s both;
 }
 
 .loader-progress-bar {

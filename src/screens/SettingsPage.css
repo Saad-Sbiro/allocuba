@@ -4,6 +4,47 @@
   width: 100%;
   min-height: 100vh;
   background: transparent;
+  position: relative;
+}
+
+/* Animated Settings Icon */
+.animated-settings-icon {
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.1s ease-out;
+}
+
+.animated-settings-icon.animating {
+  animation: iconFly 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes iconFly {
+  0% {
+    left: var(--source-x, 0);
+    top: var(--source-y, 0);
+    width: var(--source-width, 24px);
+    height: var(--source-height, 24px);
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+  100% {
+    left: var(--dest-x, 0);
+    top: var(--dest-y, 0);
+    width: var(--dest-width, 28px);
+    height: var(--dest-height, 28px);
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
 }
 
 .settings-header {

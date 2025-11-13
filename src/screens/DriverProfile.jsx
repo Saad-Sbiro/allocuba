@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import { User, Phone, MapPin, Package, LogOut, Edit, Trophy, Target, Settings } from 'lucide-react'
 import { useLanguage } from '../context/LanguageContext'
 import ConfirmDialog from '../components/ConfirmDialog'
+import LottieAnimation from '../components/LottieAnimation'
+import { LOTTIE_ANIMATIONS } from '../config/lottieAnimations'
 import './DriverProfile.css'
 
 const DriverProfile = () => {
@@ -52,12 +54,31 @@ const DriverProfile = () => {
     navigate('/signup')
   }
 
+  const handleSettingsClick = (e) => {
+    const button = e.currentTarget
+    const rect = button.getBoundingClientRect()
+    const iconRect = button.querySelector('svg')?.getBoundingClientRect() || rect
+    
+    // Store the icon position for animation
+    navigate('/driver/settings', {
+      state: {
+        animateIcon: true,
+        sourcePosition: {
+          x: iconRect.left + iconRect.width / 2,
+          y: iconRect.top + iconRect.height / 2,
+          width: iconRect.width,
+          height: iconRect.height
+        }
+      }
+    })
+  }
+
   return (
     <div className="driver-profile-page">
       <div className="driver-profile-header">
         <button 
           className="profile-settings-btn"
-          onClick={() => navigate('/driver/settings')}
+          onClick={handleSettingsClick}
           aria-label={t('navigation.settings')}
         >
           <Settings size={24} />
@@ -185,7 +206,7 @@ const DriverProfile = () => {
         <div className="profile-section">
           <button 
             className="btn btn-secondary btn-full settings-btn"
-            onClick={() => navigate('/driver/settings')}
+            onClick={handleSettingsClick}
           >
             <Settings size={20} />
             {t('navigation.settings')}

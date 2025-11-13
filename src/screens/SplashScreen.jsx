@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useLanguage } from '../context/LanguageContext'
 import logo from '../logoll.png'
+import LottieAnimation from '../components/LottieAnimation'
+import { LOTTIE_ANIMATIONS } from '../config/lottieAnimations'
 import './SplashScreen.css'
 
 const SplashScreen = () => {
@@ -44,11 +46,13 @@ const SplashScreen = () => {
         </p>
         <div className="loader-container">
           <div className="loader-wrapper">
-            <div className="loader-progress-bar">
-              <div className="loader-progress-fill" style={{ width: `${progress}%` }}>
-                <img src={logo} alt="Allocuba" className="loader-truck-logo" />
-              </div>
-            </div>
+            <LottieAnimation
+              src={LOTTIE_ANIMATIONS.splashLoader}
+              className="splash-loader-animation"
+              style={{ width: '200px', height: '200px' }}
+              loop={true}
+              autoplay={true}
+            />
             <div className="loader-percentage">{Math.round(progress)}%</div>
           </div>
         </div>

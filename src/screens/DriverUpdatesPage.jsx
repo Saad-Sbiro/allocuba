@@ -2,6 +2,8 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Bell, CheckCircle, Package, ArrowRight, Navigation, DollarSign, Calendar, AlertCircle } from 'lucide-react'
 import { useLanguage } from '../context/LanguageContext'
+import LottieAnimation from '../components/LottieAnimation'
+import { LOTTIE_ANIMATIONS } from '../config/lottieAnimations'
 import './DriverUpdatesPage.css'
 
 const DriverUpdatesPage = () => {

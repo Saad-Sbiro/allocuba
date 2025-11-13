@@ -15,31 +15,56 @@ const BottomNavigation = ({ activeTab, onNavClick, hasNotifications = false, mid
     return language === 'ar' ? t('navigation.orders') : t('navigation.orders')
   }
 
-  // Sync animatingTab with activeTab after a small delay for smooth animation
+  // Sync animatingTab with activeTab and force animation restart
   useEffect(() => {
     if (activeTab !== animatingTab) {
-      let timeoutId
-      // Use requestAnimationFrame for smooth start
-      const rafId = requestAnimationFrame(() => {
-        // Small delay to allow click feedback to complete first
-        timeoutId = setTimeout(() => {
-          setAnimatingTab(activeTab)
-        }, 20) // ~1-2 frame delay for smooth transition
+      // Remove active class from all items to force animation restart
+      const navItems = navRef.current?.querySelectorAll('.nav-item')
+      navItems?.forEach(item => {
+        item.classList.remove('active')
       })
-      return () => {
-        cancelAnimationFrame(rafId)
-        if (timeoutId) clearTimeout(timeoutId)
+      
+      // Re-add active class immediately to trigger animation
+      setAnimatingTab(activeTab)
+      const targetItem = Array.from(navItems || []).find((item, index) => {
+        if (activeTab === 'home' && index === 0) return true
+        if (activeTab === 'orders' && index === 1) return true
+        if (activeTab === 'profile' && index === 2) return true
+        return false
+      })
+      if (targetItem) {
+        // Use setTimeout with 0 to ensure DOM update happens
+        setTimeout(() => {
+          targetItem.classList.add('active')
+        }, 0)
       }
     }
   }, [activeTab, animatingTab])
 
   const handleClick = (tab) => {
-    // Immediate visual feedback - update state right away
-    setAnimatingTab(tab)
-    // Trigger navigation on next frame for smoothness
-    requestAnimationFrame(() => {
-      onNavClick(tab)
+    // Remove active class immediately
+    const navItems = navRef.current?.querySelectorAll('.nav-item')
+    navItems?.forEach(item => {
+      item.classList.remove('active')
     })
+    
+    setAnimatingTab(tab)
+    
+    // Add active class immediately to trigger animation
+    const targetItem = Array.from(navItems || []).find((item, index) => {
+      if (tab === 'home' && index === 0) return true
+      if (tab === 'orders' && index === 1) return true
+      if (tab === 'profile' && index === 2) return true
+      return false
+    })
+    if (targetItem) {
+      setTimeout(() => {
+        targetItem.classList.add('active')
+      }, 0)
+    }
+    
+    // Trigger navigation
+    onNavClick(tab)
   }
 
   return (

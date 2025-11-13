@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import { Phone, User, ArrowRight, Lock, Key } from 'lucide-react'
 import { useLanguage } from '../context/LanguageContext'
 import logo from '../logoll.png'
+import LottieAnimation from '../components/LottieAnimation'
+import { LOTTIE_ANIMATIONS } from '../config/lottieAnimations'
 import './SignUpPage.css'
 
 const SignUpPage = ({ setUser, setUserRole }) => {
@@ -125,6 +127,17 @@ const SignUpPage = ({ setUser, setUserRole }) => {
         <p className="signup-subtitle">
           {t('signup.subtitle')}
         </p>
+
+        <div className="signup-animation">
+          <LottieAnimation
+            src={LOTTIE_ANIMATIONS.app}
+            className="signup-lottie"
+            style={{ width: '150px', height: '150px' }}
+            loop={true}
+            autoplay={true}
+            speed={0.3}
+          />
+        </div>
 
         <div className="role-selector">
           <div 

@@ -4,6 +4,8 @@ import { User, Phone, MapPin, Package, LogOut, Edit } from 'lucide-react'
 import { useLanguage } from '../context/LanguageContext'
 import { Settings } from 'lucide-react'
 import ConfirmDialog from '../components/ConfirmDialog'
+import LottieAnimation from '../components/LottieAnimation'
+import { LOTTIE_ANIMATIONS } from '../config/lottieAnimations'
 import './ProfilePage.css'
 
 const ProfilePage = ({ user }) => {
@@ -50,12 +52,31 @@ const ProfilePage = ({ user }) => {
     navigate('/signup')
   }
 
+  const handleSettingsClick = (e) => {
+    const button = e.currentTarget
+    const rect = button.getBoundingClientRect()
+    const iconRect = button.querySelector('svg')?.getBoundingClientRect() || rect
+    
+    // Store the icon position for animation
+    navigate('/client/settings', {
+      state: {
+        animateIcon: true,
+        sourcePosition: {
+          x: iconRect.left + iconRect.width / 2,
+          y: iconRect.top + iconRect.height / 2,
+          width: iconRect.width,
+          height: iconRect.height
+        }
+      }
+    })
+  }
+
   return (
     <div className="profile-page">
       <div className="profile-header">
         <button 
           className="profile-settings-btn"
-          onClick={() => navigate('/client/settings')}
+          onClick={handleSettingsClick}
           aria-label={t('navigation.settings')}
         >
           <Settings size={24} />
@@ -132,7 +153,7 @@ const ProfilePage = ({ user }) => {
         <div className="profile-section">
           <button 
             className="btn btn-secondary btn-full settings-btn"
-            onClick={() => navigate('/client/settings')}
+            onClick={handleSettingsClick}
           >
             <Settings size={20} />
             {t('navigation.settings')}

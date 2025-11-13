@@ -413,7 +413,8 @@
 
 .map-placeholder {
   width: 100%;
-  height: 250px;
+  min-height: 400px;
+  padding: var(--spacing-lg);
   background: var(--glass-bg-light-weak);
   backdrop-filter: blur(var(--blur-sm)) saturate(180%);
   -webkit-backdrop-filter: blur(var(--blur-sm)) saturate(180%);
@@ -448,6 +449,43 @@
   border-color: var(--glass-border-dark-weak);
 }
 
+.location-animation {
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
+  position: relative;
+  z-index: 1;
+  animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
+  flex-shrink: 0;
+  width: 200px !important;
+  height: 200px !important;
+  max-width: 200px;
+  max-height: 200px;
+}
+
+.location-animation .lottie-container {
+  width: 200px;
+  height: 200px;
+}
+
+.location-animation .lottie-container svg,
+.location-animation .lottie-container canvas {
+  width: 200px !important;
+  height: 200px !important;
+  max-width: 200px !important;
+  max-height: 200px !important;
+  object-fit: contain;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .map-hint {
   font-size: 13px;
   color: var(--text-tertiary);
@@ -475,6 +513,9 @@
   position: relative;
   overflow: hidden;
   transition: all var(--transition-base);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
 }
 
 .address-info::before {
@@ -510,13 +551,11 @@
 
 .address-header {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: var(--spacing-md);
+  flex-direction: column;
   gap: var(--spacing-md);
-  flex-wrap: wrap;
   position: relative;
   z-index: 2;
+  width: 100%;
 }
 
 .address-text {
@@ -525,16 +564,18 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  flex: 1;
-  min-width: 150px;
   display: flex;
   align-items: center;
   gap: 6px;
+  margin: 0;
+  line-height: 1.4;
+  width: 100%;
 }
 
 .detect-location-btn {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: var(--spacing-sm);
   padding: 10px 18px;
   background: rgba(10, 132, 255, 0.15);
@@ -554,6 +595,8 @@
   position: relative;
   overflow: hidden;
   -webkit-tap-highlight-color: transparent;
+  width: 100%;
+  margin: 0;
 }
 
 .detect-location-btn::before {
@@ -620,9 +663,11 @@
   border-radius: var(--radius-md);
   position: relative;
   z-index: 2;
-  margin-top: 0;
+  margin: 0;
   border: 0.5px solid var(--glass-border-light-weak);
   box-shadow: var(--glass-shadow-sm);
+  width: 100%;
+  word-break: break-word;
 }
 
 .dark .address-details {

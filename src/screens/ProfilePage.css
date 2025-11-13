@@ -9,7 +9,7 @@
 
 .profile-header {
   background: linear-gradient(135deg, var(--ocean-blue) 0%, var(--aqua) 50%, var(--ios-blue-light) 100%);
-  padding: var(--spacing-2xl) var(--spacing-lg);
+  padding: var(--spacing-lg) var(--spacing-2xl) var(--spacing-lg);
   text-align: center;
   color: #FFFFFF;
   position: relative;
@@ -419,18 +419,36 @@
   color: var(--text-primary);
 }
 
-.logout-btn {
+.btn.btn-secondary.logout-btn,
+.logout-btn.btn.btn-secondary {
   margin-top: var(--spacing-lg);
-  color: var(--ios-red);
-  border: 1px solid var(--ios-red);
-  background: var(--glass-bg-overlay);
+  color: #FFFFFF !important;
+  border: 1.5px solid #DC2626 !important;
+  background: linear-gradient(135deg, rgba(220, 38, 38, 0.75) 0%, rgba(185, 28, 28, 0.7) 100%) !important;
   backdrop-filter: blur(var(--blur-md)) saturate(200%);
   -webkit-backdrop-filter: blur(var(--blur-md)) saturate(200%);
   font-weight: 600;
-  box-shadow: var(--glass-shadow-sm), var(--glass-shadow-inner);
+  box-shadow: 
+    0 4px 16px rgba(220, 38, 38, 0.5),
+    0 2px 8px rgba(185, 28, 28, 0.4),
+    var(--glass-shadow-inner) !important;
+  transition: all var(--transition-base);
 }
 
-.logout-btn::before {
+.btn.btn-secondary.logout-btn:hover,
+.logout-btn.btn.btn-secondary:hover {
+  background: linear-gradient(135deg, rgba(220, 38, 38, 0.85) 0%, rgba(185, 28, 28, 0.8) 100%) !important;
+  border-color: #DC2626 !important;
+  color: #FFFFFF !important;
+  box-shadow: 
+    0 6px 20px rgba(220, 38, 38, 0.6),
+    0 4px 12px rgba(185, 28, 28, 0.5),
+    var(--glass-shadow-inner) !important;
+  transform: translateY(-1px);
+}
+
+.btn.btn-secondary.logout-btn::before,
+.logout-btn.btn.btn-secondary::before {
   content: '';
   position: absolute;
   top: 50%;
@@ -444,22 +462,48 @@
   opacity: 0;
 }
 
-.logout-btn:active::before {
+.btn.btn-secondary.logout-btn:active::before,
+.logout-btn.btn.btn-secondary:active::before {
   width: 300px;
   height: 300px;
   opacity: 0;
 }
 
-.logout-btn:active {
-  background: rgba(255, 59, 48, 0.12);
+.btn.btn-secondary.logout-btn:active,
+.logout-btn.btn.btn-secondary:active {
+  background: linear-gradient(135deg, rgba(220, 38, 38, 0.9) 0%, rgba(185, 28, 28, 0.85) 100%) !important;
+  border-color: #DC2626 !important;
+  color: #FFFFFF !important;
   transform: scale(0.98);
+  box-shadow: 
+    0 2px 8px rgba(220, 38, 38, 0.5),
+    var(--glass-shadow-inner) !important;
 }
 
-.dark .logout-btn {
-  background: var(--glass-bg-overlay);
-  border-color: var(--ios-red);
+.dark .btn.btn-secondary.logout-btn,
+.dark .logout-btn.btn.btn-secondary {
+  background: linear-gradient(135deg, rgba(220, 38, 38, 0.8) 0%, rgba(185, 28, 28, 0.75) 100%) !important;
+  border-color: #DC2626 !important;
+  color: #FFFFFF !important;
+  box-shadow: 
+    0 4px 16px rgba(220, 38, 38, 0.6),
+    0 2px 8px rgba(185, 28, 28, 0.5),
+    var(--glass-shadow-inner) !important;
 }
 
-.dark .logout-btn:active {
-  background: rgba(255, 69, 58, 0.15);
+.dark .btn.btn-secondary.logout-btn:hover,
+.dark .logout-btn.btn.btn-secondary:hover {
+  background: linear-gradient(135deg, rgba(220, 38, 38, 0.9) 0%, rgba(185, 28, 28, 0.85) 100%) !important;
+  border-color: #DC2626 !important;
+  color: #FFFFFF !important;
+  box-shadow: 
+    0 6px 20px rgba(220, 38, 38, 0.7),
+    0 4px 12px rgba(185, 28, 28, 0.6),
+    var(--glass-shadow-inner) !important;
+  transform: translateY(-1px);
+}
+
+.dark .btn.btn-secondary.logout-btn:active,
+.dark .logout-btn.btn.btn-secondary:active {
+  background: linear-gradient(135deg, rgba(220, 38, 38, 0.95) 0%, rgba(185, 28, 28, 0.9) 100%) !important;
 }

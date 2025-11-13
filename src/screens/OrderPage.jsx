@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import { MapPin, CheckCircle, ArrowLeft, ArrowRight, Navigation } from 'lucide-react'
 import { useLanguage } from '../context/LanguageContext'
 import logo from '../logoll.png'
+import LottieAnimation from '../components/LottieAnimation'
+import { LOTTIE_ANIMATIONS } from '../config/lottieAnimations'
 import './OrderPage.css'
 
 const OrderPage = () => {
@@ -161,7 +163,13 @@ const OrderPage = () => {
               {t('order.deliveryAddress')}
             </h3>
             <div className="map-placeholder">
-              <MapPin size={48} color="#4A90E2" />
+              <LottieAnimation
+                src={LOTTIE_ANIMATIONS.location}
+                className="location-animation"
+                style={{ width: '200px', height: '200px', marginBottom: '20px' }}
+                loop={true}
+                autoplay={true}
+              />
               <p>{t('order.interactiveMap')}</p>
               <p className="map-hint">{t('order.currentLocation')}</p>
               <button className="btn btn-secondary map-select-btn">
@@ -247,6 +255,7 @@ const OrderPage = () => {
         </button>
         <h2 className="page-title">{t('order.title')}</h2>
       </div>
+
 
       {/* Step Indicators */}
       <div className="step-indicators">

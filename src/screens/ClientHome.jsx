@@ -4,6 +4,8 @@ import { Home, Package, User, MapPin, Phone } from 'lucide-react'
 import { useLanguage } from '../context/LanguageContext'
 import logo from '../logoll.png'
 import NotificationCard from '../components/NotificationCard'
+import LottieAnimation from '../components/LottieAnimation'
+import { LOTTIE_ANIMATIONS } from '../config/lottieAnimations'
 import './ClientHome.css'
 
 const ClientHome = ({ user }) => {
@@ -69,11 +71,21 @@ const ClientHome = ({ user }) => {
             </h1>
             <p className="greeting-subtitle">{t('clientHome.subtitle')}</p>
           </div>
+          <img src={logo} alt="Allocuba" className="home-header-logo" />
         </div>
 
         <div className="main-action-card">
           <div className="action-icon">
-            <img src={logo} alt="Allocuba" className="action-logo" />
+            <div className="home-animation">
+              <LottieAnimation
+                src={LOTTIE_ANIMATIONS.app}
+                className="home-lottie"
+                style={{ width: '100px', height: '100px' }}
+                loop={true}
+                autoplay={true}
+                speed={0.3}
+              />
+            </div>
           </div>
           <h2 className="action-title">{t('clientHome.needWater')}</h2>
           <p className="action-description">{t('clientHome.orderNow')}</p>

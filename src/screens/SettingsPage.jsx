@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useState, useEffect, useRef } from 'react'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { Settings, Globe, Moon, Sun, Palette, Phone, Heart, Info, ArrowLeft } from 'lucide-react'
 import { useLanguage } from '../context/LanguageContext'
 import { useTheme } from '../context/ThemeContext'
@@ -7,15 +7,21 @@ import { useThemeColor } from '../context/ThemeColorContext'
 import LanguageSelector from '../components/LanguageSelector'
 import ThemeToggle from '../components/ThemeToggle'
 import DonationModal from '../components/DonationModal'
+import LottieAnimation from '../components/LottieAnimation'
+import { LOTTIE_ANIMATIONS } from '../config/lottieAnimations'
 import './SettingsPage.css'
 
 const SettingsPage = ({ userRole }) => {
   const navigate = useNavigate()
+  const location = useLocation()
   const { t } = useLanguage()
   const { isDark } = useTheme()
   const { themeColor, setThemeColor } = useThemeColor()
   const [showColorPicker, setShowColorPicker] = useState(false)
   const [showDonationModal, setShowDonationModal] = useState(false)
+  const [isAnimating, setIsAnimating] = useState(false)
+  const settingsTitleRef = useRef(null)
+  const animatedIconRef = useRef(null)
 
   const presetColors = [
     { name: 'Bleu iOS', value: '#0A84FF' },
@@ -43,8 +49,77 @@ const SettingsPage = ({ userRole }) => {
     alert(t('donationModal.successMessage', { amount }))
   }
 
+  // Handle icon animation on mount
+  useEffect(() => {
+    const animationData = location.state?.animateIcon && location.state?.sourcePosition
+    if (animationData && settingsTitleRef.current) {
+      const titleIcon = settingsTitleRef.current.querySelector('svg')
+      if (titleIcon && animatedIconRef.current) {
+        // Wait for layout to be ready
+        setTimeout(() => {
+          const titleRect = titleIcon.getBoundingClientRect()
+          const destination = {
+            x: titleRect.left + titleRect.width / 2,
+            y: titleRect.top + titleRect.height / 2,
+            width: titleRect.width,
+            height: titleRect.height
+          }
+
+          const source = animationData.sourcePosition
+          
+          // Set initial position and CSS variables
+          const animatedIcon = animatedIconRef.current
+          animatedIcon.style.setProperty('--source-x', `${source.x}px`)
+          animatedIcon.style.setProperty('--source-y', `${source.y}px`)
+          animatedIcon.style.setProperty('--source-width', `${source.width}px`)
+          animatedIcon.style.setProperty('--source-height', `${source.height}px`)
+          animatedIcon.style.setProperty('--dest-x', `${destination.x}px`)
+          animatedIcon.style.setProperty('--dest-y', `${destination.y}px`)
+          animatedIcon.style.setProperty('--dest-width', `${destination.width}px`)
+          animatedIcon.style.setProperty('--dest-height', `${destination.height}px`)
+          
+          animatedIcon.style.left = `${source.x}px`
+          animatedIcon.style.top = `${source.y}px`
+          animatedIcon.style.width = `${source.width}px`
+          animatedIcon.style.height = `${source.height}px`
+          animatedIcon.style.opacity = '1'
+          setIsAnimating(true)
+
+          // Hide the original icon temporarily
+          titleIcon.style.opacity = '0'
+
+          // Trigger animation after a small delay
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              animatedIcon.classList.add('animating')
+            })
+          })
+
+          // Clean up after animation
+          const timer = setTimeout(() => {
+            setIsAnimating(false)
+            titleIcon.style.opacity = '1'
+            animatedIcon.style.opacity = '0'
+            animatedIcon.classList.remove('animating')
+          }, 600) // Match animation duration
+
+          return () => clearTimeout(timer)
+        }, 50)
+      }
+    }
+  }, [location.state])
+
   return (
     <div className="settings-page">
+      {/* Animated icon overlay */}
+      <div 
+        ref={animatedIconRef}
+        className="animated-settings-icon"
+        style={{ display: isAnimating ? 'block' : 'none' }}
+      >
+        <Settings size={28} />
+      </div>
+      
       <div className="scrollable-content">
         <div className="settings-header">
           <button 
@@ -56,7 +131,7 @@ const SettingsPage = ({ userRole }) => {
           >
             <ArrowLeft size={24} />
           </button>
-          <h1 className="settings-title">
+          <h1 className="settings-title" ref={settingsTitleRef}>
             <Settings size={28} />
             {t('settings.title')}
           </h1>
